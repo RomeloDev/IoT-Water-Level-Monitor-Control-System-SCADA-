@@ -1,8 +1,11 @@
 import { database } from "@/services/firebase";
+import { Audio, AVPlaybackSource, Sound } from "expo-av";
+import * as Notifications from "expo-notifications";
 import { onValue, ref, update } from "firebase/database";
-import React, { useEffect, useState } from "react";
-import { StyleSheet, Switch, Text, View, ScrollView } from "react-native"; // <--- Import ScrollView
+import React, { useEffect, useRef, useState } from "react";
+import { ScrollView, StyleSheet, Switch, Text, View } from "react-native"; // <--- Import ScrollView
 import CircularProgress from "react-native-circular-progress-indicator";
+import { LogBox } from "react-native";
 
 export default function DashboardScreen() {
   const [waterLevel, setWaterLevel] = useState<number>(0);
@@ -10,9 +13,88 @@ export default function DashboardScreen() {
   const [tankDepth, setTankDepth] = useState<number>(0);
   const [pump1, setPump1] = useState<boolean>(false);
   const [pump2, setPump2] = useState<boolean>(false);
+  const soundRef = useRef<Sound | null>(null);
+  const alarmNotifiedRef = useRef<boolean>(false);
+  const notificationPermissionGrantedRef = useRef<boolean>(false);
+
+  useEffect(() => {
+    Notifications.setNotificationHandler({
+      handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: false,
+      }),
+    });
+  }, []);
+
+  useEffect(() => {
+    const requestPermissions = async (): Promise<void> => {
+      const { status, granted } = await Notifications.requestPermissionsAsync();
+      console.log("Permission status:", status);
+      notificationPermissionGrantedRef.current =
+        granted || status === "granted";
+    };
+
+    void requestPermissions();
+  }, []);
 
   useEffect(() => {
     const tankRef = ref(database, "tank_01");
+
+    const startAlarm = async (): Promise<void> => {
+      if (soundRef.current) return;
+
+      const mode = {
+        allowsRecordingIOS: false,
+        playsInSilentModeIOS: true,
+        staysActiveInBackground: false,
+        shouldDuckAndroid: true,
+        playThroughEarpieceAndroid: false,
+        ...(Audio.InterruptionModeIOS?.DoNotMix
+          ? { interruptionModeIOS: Audio.InterruptionModeIOS.DoNotMix }
+          : {}),
+        ...(Audio.InterruptionModeAndroid?.DoNotMix
+          ? { interruptionModeAndroid: Audio.InterruptionModeAndroid.DoNotMix }
+          : {}),
+      };
+
+      await Audio.setAudioModeAsync(mode);
+
+      try {
+        const alarmSource: AVPlaybackSource = require("../../assets/alarm.mp3");
+        const { sound } = await Audio.Sound.createAsync(alarmSource, {
+          isLooping: true,
+          volume: 1.0,
+        });
+        soundRef.current = sound;
+        await sound.playAsync();
+      } catch (error) {
+        console.warn("Failed to play alarm sound:", error);
+      }
+
+      if (
+        !alarmNotifiedRef.current &&
+        notificationPermissionGrantedRef.current
+      ) {
+        alarmNotifiedRef.current = true;
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: "Critical Alert",
+            body: "⚠️ CRITICAL LEVEL: Water is below 10%!",
+          },
+          trigger: null,
+        });
+      }
+    };
+
+    const stopAlarm = async (): Promise<void> => {
+      if (soundRef.current) {
+        await soundRef.current.stopAsync();
+        await soundRef.current.unloadAsync();
+        soundRef.current = null;
+      }
+    };
+
     const unsubscribe = onValue(tankRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
@@ -23,28 +105,49 @@ export default function DashboardScreen() {
 
         const percentage =
           totalDepth > 0 ? ((totalDepth - distanceCm) / totalDepth) * 100 : 0;
+        const clamped = Math.max(0, Math.min(100, Math.round(percentage)));
 
         setTankDepth(totalDepth);
         setDistance(distanceCm);
-        setWaterLevel(Math.max(0, Math.min(100, Math.round(percentage))));
+        setWaterLevel(clamped);
         setPump1(p1);
         setPump2(p2);
+
+        if (clamped < 10) {
+          void startAlarm();
+        } else {
+          alarmNotifiedRef.current = false;
+          void stopAlarm();
+        }
       }
     });
-    return () => unsubscribe();
+
+    return () => {
+      unsubscribe();
+      void stopAlarm();
+    };
   }, []);
 
-  const togglePump = (pumpKey: "pump_1_status" | "pump_2_status", currentVal: boolean) => {
+  const togglePump = (
+    pumpKey: "pump_1_status" | "pump_2_status",
+    currentVal: boolean,
+  ) => {
     const tankRef = ref(database, "tank_01");
     update(tankRef, { [pumpKey]: !currentVal });
   };
 
   const waterHeight = tankDepth > 0 ? Math.max(0, tankDepth - distance) : 0;
 
+  // Ignore the specific Expo Go notification warning
+  LogBox.ignoreLogs([
+    'expo-notifications: Android Push notifications',
+    'Encountered an error while trying to get the push token',
+  ]);
+
   return (
     // CHANGED: View -> ScrollView
-    <ScrollView 
-      style={styles.container} 
+    <ScrollView
+      style={styles.container}
       contentContainerStyle={styles.scrollContent} // <--- Added this prop
       showsVerticalScrollIndicator={false}
     >
