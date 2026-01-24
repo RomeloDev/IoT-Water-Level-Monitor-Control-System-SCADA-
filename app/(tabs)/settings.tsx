@@ -1,5 +1,5 @@
 import { database } from "@/services/firebase";
-import { get, ref, update } from "firebase/database";
+import { onValue, ref, update } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import {
   Alert,
@@ -16,21 +16,26 @@ export default function SettingsScreen() {
   const [isSaving, setIsSaving] = useState<boolean>(false);
 
   useEffect(() => {
-    const loadSettings = async () => {
-      try {
-        const tankRef = ref(database, "tank_01");
-        const snapshot = await get(tankRef);
+    const tankRef = ref(database, "tank_01");
+    const unsubscribe = onValue(
+      tankRef,
+      (snapshot) => {
         if (snapshot.exists()) {
           const data = snapshot.val();
-          if (data.total_depth_cm) setTankDepth(String(data.total_depth_cm));
-          if (data.auto_switch_minutes)
+          if (data.total_depth_cm !== undefined) {
+            setTankDepth(String(data.total_depth_cm));
+          }
+          if (data.auto_switch_minutes !== undefined) {
             setFailoverTimer(String(data.auto_switch_minutes));
+          }
         }
-      } catch (error) {
+      },
+      (error) => {
         console.warn("Failed to load settings from Firebase:", error);
-      }
-    };
-    loadSettings();
+      },
+    );
+
+    return () => unsubscribe();
   }, []);
 
   const handleSave = async (): Promise<void> => {

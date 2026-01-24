@@ -27,7 +27,6 @@ export default function DashboardScreen() {
   useEffect(() => {
     Notifications.setNotificationHandler({
       handleNotification: async () => ({
-        shouldShowAlert: true,
         shouldPlaySound: true,
         shouldSetBadge: false,
         shouldShowBanner: true,
@@ -136,6 +135,7 @@ export default function DashboardScreen() {
   LogBox.ignoreLogs([
     "expo-notifications: Android Push notifications",
     "Encountered an error while trying to get the push token",
+    "[Reanimated] `createAnimatedPropAdapter` is no longer necessary in Reanimated 4",
   ]);
 
   return (
