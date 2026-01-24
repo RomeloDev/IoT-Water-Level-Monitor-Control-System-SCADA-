@@ -1,11 +1,17 @@
 import { database } from "@/services/firebase";
-import { Audio, AVPlaybackSource, Sound } from "expo-av";
+import { setAudioModeAsync, useAudioPlayer } from "expo-audio";
 import * as Notifications from "expo-notifications";
 import { onValue, ref, update } from "firebase/database";
 import React, { useEffect, useRef, useState } from "react";
-import { ScrollView, StyleSheet, Switch, Text, View } from "react-native"; // <--- Import ScrollView
+import {
+  LogBox,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+} from "react-native"; // <--- Import ScrollView
 import CircularProgress from "react-native-circular-progress-indicator";
-import { LogBox } from "react-native";
 
 export default function DashboardScreen() {
   const [waterLevel, setWaterLevel] = useState<number>(0);
@@ -13,7 +19,8 @@ export default function DashboardScreen() {
   const [tankDepth, setTankDepth] = useState<number>(0);
   const [pump1, setPump1] = useState<boolean>(false);
   const [pump2, setPump2] = useState<boolean>(false);
-  const soundRef = useRef<Sound | null>(null);
+  const alarmPlayer = useAudioPlayer(require("../../assets/alarm.mp3"));
+  const isAlarmPlayingRef = useRef<boolean>(false);
   const alarmNotifiedRef = useRef<boolean>(false);
   const notificationPermissionGrantedRef = useRef<boolean>(false);
 
@@ -23,6 +30,8 @@ export default function DashboardScreen() {
         shouldShowAlert: true,
         shouldPlaySound: true,
         shouldSetBadge: false,
+        shouldShowBanner: true,
+        shouldShowList: true,
       }),
     });
   }, []);
@@ -42,32 +51,17 @@ export default function DashboardScreen() {
     const tankRef = ref(database, "tank_01");
 
     const startAlarm = async (): Promise<void> => {
-      if (soundRef.current) return;
-
-      const mode = {
-        allowsRecordingIOS: false,
-        playsInSilentModeIOS: true,
-        staysActiveInBackground: false,
-        shouldDuckAndroid: true,
-        playThroughEarpieceAndroid: false,
-        ...(Audio.InterruptionModeIOS?.DoNotMix
-          ? { interruptionModeIOS: Audio.InterruptionModeIOS.DoNotMix }
-          : {}),
-        ...(Audio.InterruptionModeAndroid?.DoNotMix
-          ? { interruptionModeAndroid: Audio.InterruptionModeAndroid.DoNotMix }
-          : {}),
-      };
-
-      await Audio.setAudioModeAsync(mode);
+      if (isAlarmPlayingRef.current) return;
 
       try {
-        const alarmSource: AVPlaybackSource = require("../../assets/alarm.mp3");
-        const { sound } = await Audio.Sound.createAsync(alarmSource, {
-          isLooping: true,
-          volume: 1.0,
+        await setAudioModeAsync({
+          playsInSilentMode: true,
         });
-        soundRef.current = sound;
-        await sound.playAsync();
+
+        alarmPlayer.loop = true;
+        alarmPlayer.volume = 1;
+        alarmPlayer.play();
+        isAlarmPlayingRef.current = true;
       } catch (error) {
         console.warn("Failed to play alarm sound:", error);
       }
@@ -88,11 +82,10 @@ export default function DashboardScreen() {
     };
 
     const stopAlarm = async (): Promise<void> => {
-      if (soundRef.current) {
-        await soundRef.current.stopAsync();
-        await soundRef.current.unloadAsync();
-        soundRef.current = null;
-      }
+      if (!isAlarmPlayingRef.current) return;
+      alarmPlayer.pause();
+      alarmPlayer.seekTo(0);
+      isAlarmPlayingRef.current = false;
     };
 
     const unsubscribe = onValue(tankRef, (snapshot) => {
@@ -125,6 +118,7 @@ export default function DashboardScreen() {
     return () => {
       unsubscribe();
       void stopAlarm();
+      alarmPlayer.remove();
     };
   }, []);
 
@@ -140,8 +134,8 @@ export default function DashboardScreen() {
 
   // Ignore the specific Expo Go notification warning
   LogBox.ignoreLogs([
-    'expo-notifications: Android Push notifications',
-    'Encountered an error while trying to get the push token',
+    "expo-notifications: Android Push notifications",
+    "Encountered an error while trying to get the push token",
   ]);
 
   return (
