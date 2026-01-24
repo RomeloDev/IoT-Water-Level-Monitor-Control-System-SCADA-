@@ -1,98 +1,189 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { database } from "@/services/firebase";
+import { onValue, ref, update } from "firebase/database";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Switch, Text, View, ScrollView } from "react-native"; // <--- Import ScrollView
+import CircularProgress from "react-native-circular-progress-indicator";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+export default function DashboardScreen() {
+  const [waterLevel, setWaterLevel] = useState<number>(0);
+  const [distance, setDistance] = useState<number>(0);
+  const [tankDepth, setTankDepth] = useState<number>(0);
+  const [pump1, setPump1] = useState<boolean>(false);
+  const [pump2, setPump2] = useState<boolean>(false);
 
-export default function HomeScreen() {
+  useEffect(() => {
+    const tankRef = ref(database, "tank_01");
+    const unsubscribe = onValue(tankRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const distanceCm = data.distance_cm ?? 0;
+        const totalDepth = data.total_depth_cm ?? 0;
+        const p1 = data.pump_1_status ?? false;
+        const p2 = data.pump_2_status ?? false;
+
+        const percentage =
+          totalDepth > 0 ? ((totalDepth - distanceCm) / totalDepth) * 100 : 0;
+
+        setTankDepth(totalDepth);
+        setDistance(distanceCm);
+        setWaterLevel(Math.max(0, Math.min(100, Math.round(percentage))));
+        setPump1(p1);
+        setPump2(p2);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const togglePump = (pumpKey: "pump_1_status" | "pump_2_status", currentVal: boolean) => {
+    const tankRef = ref(database, "tank_01");
+    update(tankRef, { [pumpKey]: !currentVal });
+  };
+
+  const waterHeight = tankDepth > 0 ? Math.max(0, tankDepth - distance) : 0;
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    // CHANGED: View -> ScrollView
+    <ScrollView 
+      style={styles.container} 
+      contentContainerStyle={styles.scrollContent} // <--- Added this prop
+      showsVerticalScrollIndicator={false}
+    >
+      <Text style={styles.headerTitle}>Water Monitor</Text>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <View style={styles.gaugeContainer}>
+        <CircularProgress
+          value={waterLevel}
+          radius={120}
+          duration={1000}
+          progressValueColor={"#2ecc71"}
+          maxValue={100}
+          title={"%"}
+          titleColor={"#2c3e50"}
+          titleStyle={{ fontWeight: "bold" }}
+          activeStrokeColor={"#3498db"}
+          inActiveStrokeColor={"#ecf0f1"}
+        />
+      </View>
+
+      <View style={styles.infoContainer}>
+        <Text style={styles.label}>Current Water Level:</Text>
+        <Text style={styles.value}>
+          {tankDepth > 0 ? `${waterHeight} cm` : "--"}
+        </Text>
+        <Text style={{ fontSize: 12, color: "#bdc3c7", marginBottom: 20 }}>
+          (Sensor Distance: {distance} cm | Total Depth: {tankDepth} cm)
+        </Text>
+
+        <View
+          style={[
+            styles.statusBadge,
+            { backgroundColor: waterLevel < 10 ? "#e74c3c" : "#2ecc71" },
+          ]}
+        >
+          <Text style={styles.statusText}>
+            {waterLevel < 10 ? "⚠️ CRITICAL LOW" : "NORMAL STATUS"}
+          </Text>
+        </View>
+
+        {/* Manual Pump Control */}
+        <View style={styles.pumpControls}>
+          <Text style={styles.pumpTitle}>Manual Pump Control</Text>
+
+          <View style={styles.pumpRow}>
+            <Text style={styles.pumpLabel}>Pump 1</Text>
+            <Switch
+              trackColor={{ false: "#767577", true: "#3498db" }}
+              thumbColor={pump1 ? "#fff" : "#f4f3f4"}
+              onValueChange={() => togglePump("pump_1_status", pump1)}
+              value={pump1}
+            />
+          </View>
+
+          <View style={styles.pumpRow}>
+            <Text style={styles.pumpLabel}>Pump 2</Text>
+            <Switch
+              trackColor={{ false: "#767577", true: "#3498db" }}
+              thumbColor={pump2 ? "#fff" : "#f4f3f4"}
+              onValueChange={() => togglePump("pump_2_status", pump2)}
+              value={pump2}
+            />
+          </View>
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  // NEW: This style handles the alignment inside the ScrollView
+  scrollContent: {
+    alignItems: "center",
+    paddingTop: 60,
+    paddingBottom: 40, // Adds space at the bottom so you can scroll past the last item
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  headerTitle: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#2c3e50",
+    marginBottom: 40,
+  },
+  gaugeContainer: {
+    marginBottom: 40,
+  },
+  infoContainer: {
+    alignItems: "center",
+    width: "85%", // Increased slightly for better fit
+  },
+  label: {
+    fontSize: 16,
+    color: "#7f8c8d",
+  },
+  value: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "#2c3e50",
+    marginBottom: 10,
+  },
+  statusBadge: {
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderRadius: 25,
+    marginTop: 10,
+    marginBottom: 30, // Added margin to separate from Pump Controls
+  },
+  statusText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  pumpControls: {
+    width: "100%",
+    backgroundColor: "#f8f9fb",
+    padding: 20,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#ecf0f1",
+  },
+  pumpTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#2c3e50",
+    marginBottom: 15,
+    textAlign: "center",
+  },
+  pumpRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 15, // Increased spacing between switches
+  },
+  pumpLabel: {
+    fontSize: 16,
+    color: "#2c3e50",
+    fontWeight: "500",
   },
 });
