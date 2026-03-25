@@ -16,7 +16,7 @@ import CircularProgress from "react-native-circular-progress-indicator";
 export default function DashboardScreen() {
   const [waterLevel, setWaterLevel] = useState<number>(0);
   const [distance, setDistance] = useState<number>(0);
-  const [tankDepth, setTankDepth] = useState<number>(0);
+  const [lastUpdated, setLastUpdated] = useState<string>("--");
   const [pump1, setPump1] = useState<boolean>(false);
   const [pump2, setPump2] = useState<boolean>(false);
   const alarmPlayer = useAudioPlayer(require("../../assets/alarm.mp3"));
@@ -97,19 +97,17 @@ export default function DashboardScreen() {
         }
 
         const distanceCm = data.distance_cm ?? 0;
-        const totalDepth = data.total_depth_cm ?? 0;
+        const levelPercent = data.level_percent ?? 0;
         const p1 = data.pump_1_status ?? false;
         const p2 = data.pump_2_status ?? false;
 
-        const percentage =
-          totalDepth > 0 ? ((totalDepth - distanceCm) / totalDepth) * 100 : 0;
-        const clamped = Math.max(0, Math.min(100, Math.round(percentage)));
+        const clamped = Math.max(0, Math.min(100, Math.round(levelPercent)));
 
-        setTankDepth(totalDepth);
         setDistance(distanceCm);
         setWaterLevel(clamped);
         setPump1(p1);
         setPump2(p2);
+        setLastUpdated(new Date().toLocaleTimeString());
 
         if (clamped < 10) {
           void startAlarm();
@@ -137,8 +135,6 @@ export default function DashboardScreen() {
     const tankRef = ref(database, "tank_01");
     update(tankRef, { [pumpKey]: !currentVal });
   };
-
-  const waterHeight = tankDepth > 0 ? Math.max(0, tankDepth - distance) : 0;
 
   // Ignore the specific Expo Go notification warning
   LogBox.ignoreLogs([
@@ -172,13 +168,8 @@ export default function DashboardScreen() {
       </View>
 
       <View style={styles.infoContainer}>
-        <Text style={styles.label}>Current Water Level:</Text>
-        <Text style={styles.value}>
-          {tankDepth > 0 ? `${waterHeight} cm` : "--"}
-        </Text>
-        <Text style={{ fontSize: 12, color: "#bdc3c7", marginBottom: 20 }}>
-          (Sensor Distance: {distance} cm | Total Depth: {tankDepth} cm)
-        </Text>
+        <Text style={styles.secondaryInfo}>Sensor Distance: {distance} cm</Text>
+        <Text style={styles.secondaryInfo}>Last Updated: {lastUpdated}</Text>
 
         <View
           style={[
@@ -253,6 +244,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#2c3e50",
     marginBottom: 10,
+  },
+  secondaryInfo: {
+    fontSize: 12,
+    color: "#95a5a6",
+    marginBottom: 18,
   },
   statusBadge: {
     paddingVertical: 10,
