@@ -20,18 +20,21 @@ export default function SettingsScreen() {
     const unsubscribe = onValue(
       tankRef,
       (snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          if (data.total_depth_cm !== undefined) {
-            setTankDepth(String(data.total_depth_cm));
-          }
-          if (data.auto_switch_minutes !== undefined) {
-            setFailoverTimer(String(data.auto_switch_minutes));
-          }
+        if (!snapshot.exists()) {
+          console.warn("Firebase snapshot is empty for tank_01 settings");
+          return;
+        }
+
+        const data = snapshot.val();
+        if (data.total_depth_cm !== undefined) {
+          setTankDepth(String(data.total_depth_cm));
+        }
+        if (data.auto_switch_minutes !== undefined) {
+          setFailoverTimer(String(data.auto_switch_minutes));
         }
       },
       (error) => {
-        console.warn("Failed to load settings from Firebase:", error);
+        console.error("Failed to load settings from Firebase:", error);
       },
     );
 

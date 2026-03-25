@@ -6,17 +6,56 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_KEY": "AIzaSyAxxdd57OaqWavGOGAjRubDHROG5IXweFk",
+        "EXPO_PUBLIC_AUTH_DOMAIN": "iot-water-level-app.firebaseapp.com",
+        "EXPO_PUBLIC_DATABASE_URL": "https://iot-water-level-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+        "EXPO_PUBLIC_PROJECT_ID": "iot-water-level-app",
+        "EXPO_PUBLIC_STORAGE_BUCKET": "iot-water-level-app.firebasestorage.app",
+        "EXPO_PUBLIC_MESSAGING_SENDER_ID": "587581766448",
+        "EXPO_PUBLIC_APP_ID": "1:587581766448:web:87956640a4a2a33143e6f5"
+      }
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_KEY": "AIzaSyAxxdd57OaqWavGOGAjRubDHROG5IXweFk",
+        "EXPO_PUBLIC_AUTH_DOMAIN": "iot-water-level-app.firebaseapp.com",
+        "EXPO_PUBLIC_DATABASE_URL": "https://iot-water-level-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+        "EXPO_PUBLIC_PROJECT_ID": "iot-water-level-app",
+        "EXPO_PUBLIC_STORAGE_BUCKET": "iot-water-level-app.firebasestorage.app",
+        "EXPO_PUBLIC_MESSAGING_SENDER_ID": "587581766448",
+        "EXPO_PUBLIC_APP_ID": "1:587581766448:web:87956640a4a2a33143e6f5"
+      }
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_API_KEY": "AIzaSyAxxdd57OaqWavGOGAjRubDHROG5IXweFk",
+        "EXPO_PUBLIC_AUTH_DOMAIN": "iot-water-level-app.firebaseapp.com",
+        "EXPO_PUBLIC_DATABASE_URL": "https://iot-water-level-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+        "EXPO_PUBLIC_PROJECT_ID": "iot-water-level-app",
+        "EXPO_PUBLIC_STORAGE_BUCKET": "iot-water-level-app.firebasestorage.app",
+        "EXPO_PUBLIC_MESSAGING_SENDER_ID": "587581766448",
+        "EXPO_PUBLIC_APP_ID": "1:587581766448:web:87956640a4a2a33143e6f5"
+      }
     },
     "apk": {
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_KEY": "AIzaSyAxxdd57OaqWavGOGAjRubDHROG5IXweFk",
+        "EXPO_PUBLIC_AUTH_DOMAIN": "iot-water-level-app.firebaseapp.com",
+        "EXPO_PUBLIC_DATABASE_URL": "https://iot-water-level-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+        "EXPO_PUBLIC_PROJECT_ID": "iot-water-level-app",
+        "EXPO_PUBLIC_STORAGE_BUCKET": "iot-water-level-app.firebasestorage.app",
+        "EXPO_PUBLIC_MESSAGING_SENDER_ID": "587581766448",
+        "EXPO_PUBLIC_APP_ID": "1:587581766448:web:87956640a4a2a33143e6f5"
       }
     }
   },

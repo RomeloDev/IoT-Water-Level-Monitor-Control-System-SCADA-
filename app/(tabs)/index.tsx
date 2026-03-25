@@ -87,9 +87,15 @@ export default function DashboardScreen() {
       isAlarmPlayingRef.current = false;
     };
 
-    const unsubscribe = onValue(tankRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
+    const unsubscribe = onValue(
+      tankRef,
+      (snapshot) => {
+        const data = snapshot.val();
+        if (!data) {
+          console.warn("Firebase snapshot is empty for tank_01");
+          return;
+        }
+
         const distanceCm = data.distance_cm ?? 0;
         const totalDepth = data.total_depth_cm ?? 0;
         const p1 = data.pump_1_status ?? false;
@@ -111,8 +117,11 @@ export default function DashboardScreen() {
           alarmNotifiedRef.current = false;
           void stopAlarm();
         }
-      }
-    });
+      },
+      (error) => {
+        console.error("Firebase onValue error:", error);
+      },
+    );
 
     return () => {
       unsubscribe();

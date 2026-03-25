@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "587581766448",
+    "firebase_url": "https://iot-water-level-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "iot-water-level-app",
+    "storage_bucket": "iot-water-level-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587581766448:android:fe34d825f7cf576243e6f5",
+        "android_client_info": {
+          "package_name": "com.anonymous.iotwaterlevelapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSNsUIFxOoPREh7fQvDahpugv2PC4k7Vk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
