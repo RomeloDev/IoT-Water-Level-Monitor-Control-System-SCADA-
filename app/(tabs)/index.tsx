@@ -24,6 +24,11 @@ export default function DashboardScreen() {
   const [valve3, setValve3] = useState<boolean>(false);
   const [valve4, setValve4] = useState<boolean>(false);
   const [valve5, setValve5] = useState<boolean>(false);
+  const [valve1Name, setValve1Name] = useState<string>("Valve 1");
+  const [valve2Name, setValve2Name] = useState<string>("Valve 2");
+  const [valve3Name, setValve3Name] = useState<string>("Valve 3");
+  const [valve4Name, setValve4Name] = useState<string>("Valve 4");
+  const [valve5Name, setValve5Name] = useState<string>("Valve 5");
   const alarmPlayer = useAudioPlayer(require("../../assets/alarm.mp3"));
   const isAlarmPlayingRef = useRef<boolean>(false);
   const alarmNotifiedRef = useRef<boolean>(false);
@@ -110,6 +115,11 @@ export default function DashboardScreen() {
         const v3 = data.valve_3_status ?? false;
         const v4 = data.valve_4_status ?? false;
         const v5 = data.valve_5_status ?? false;
+        const name1 = String(data.valve_1_name ?? "").trim();
+        const name2 = String(data.valve_2_name ?? "").trim();
+        const name3 = String(data.valve_3_name ?? "").trim();
+        const name4 = String(data.valve_4_name ?? "").trim();
+        const name5 = String(data.valve_5_name ?? "").trim();
 
         const clamped = Math.max(0, Math.min(100, Math.round(levelPercent)));
 
@@ -122,6 +132,11 @@ export default function DashboardScreen() {
         setValve3(v3);
         setValve4(v4);
         setValve5(v5);
+        setValve1Name(name1.length > 0 ? name1 : "Valve 1");
+        setValve2Name(name2.length > 0 ? name2 : "Valve 2");
+        setValve3Name(name3.length > 0 ? name3 : "Valve 3");
+        setValve4Name(name4.length > 0 ? name4 : "Valve 4");
+        setValve5Name(name5.length > 0 ? name5 : "Valve 5");
         setLastUpdated(new Date().toLocaleTimeString());
 
         if (clamped < 10) {
@@ -233,7 +248,7 @@ export default function DashboardScreen() {
           <Text style={styles.pumpTitle}>Valve Controls</Text>
 
           <View style={styles.pumpRow}>
-            <Text style={styles.pumpLabel}>Valve 1</Text>
+            <Text style={styles.pumpLabel}>{valve1Name}</Text>
             <Switch
               trackColor={{ false: "#767577", true: "#3498db" }}
               thumbColor={valve1 ? "#fff" : "#f4f3f4"}
@@ -243,7 +258,7 @@ export default function DashboardScreen() {
           </View>
 
           <View style={styles.pumpRow}>
-            <Text style={styles.pumpLabel}>Valve 2</Text>
+            <Text style={styles.pumpLabel}>{valve2Name}</Text>
             <Switch
               trackColor={{ false: "#767577", true: "#3498db" }}
               thumbColor={valve2 ? "#fff" : "#f4f3f4"}
@@ -253,7 +268,7 @@ export default function DashboardScreen() {
           </View>
 
           <View style={styles.pumpRow}>
-            <Text style={styles.pumpLabel}>Valve 3</Text>
+            <Text style={styles.pumpLabel}>{valve3Name}</Text>
             <Switch
               trackColor={{ false: "#767577", true: "#3498db" }}
               thumbColor={valve3 ? "#fff" : "#f4f3f4"}
@@ -263,7 +278,7 @@ export default function DashboardScreen() {
           </View>
 
           <View style={styles.pumpRow}>
-            <Text style={styles.pumpLabel}>Valve 4</Text>
+            <Text style={styles.pumpLabel}>{valve4Name}</Text>
             <Switch
               trackColor={{ false: "#767577", true: "#3498db" }}
               thumbColor={valve4 ? "#fff" : "#f4f3f4"}
@@ -273,7 +288,7 @@ export default function DashboardScreen() {
           </View>
 
           <View style={styles.pumpRow}>
-            <Text style={styles.pumpLabel}>Valve 5</Text>
+            <Text style={styles.pumpLabel}>{valve5Name}</Text>
             <Switch
               trackColor={{ false: "#767577", true: "#3498db" }}
               thumbColor={valve5 ? "#fff" : "#f4f3f4"}
