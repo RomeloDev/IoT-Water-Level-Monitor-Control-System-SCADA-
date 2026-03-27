@@ -19,6 +19,11 @@ export default function DashboardScreen() {
   const [lastUpdated, setLastUpdated] = useState<string>("--");
   const [pump1, setPump1] = useState<boolean>(false);
   const [pump2, setPump2] = useState<boolean>(false);
+  const [valve1, setValve1] = useState<boolean>(false);
+  const [valve2, setValve2] = useState<boolean>(false);
+  const [valve3, setValve3] = useState<boolean>(false);
+  const [valve4, setValve4] = useState<boolean>(false);
+  const [valve5, setValve5] = useState<boolean>(false);
   const alarmPlayer = useAudioPlayer(require("../../assets/alarm.mp3"));
   const isAlarmPlayingRef = useRef<boolean>(false);
   const alarmNotifiedRef = useRef<boolean>(false);
@@ -100,6 +105,11 @@ export default function DashboardScreen() {
         const levelPercent = data.level_percent ?? 0;
         const p1 = data.pump_1_status ?? false;
         const p2 = data.pump_2_status ?? false;
+        const v1 = data.valve_1_status ?? false;
+        const v2 = data.valve_2_status ?? false;
+        const v3 = data.valve_3_status ?? false;
+        const v4 = data.valve_4_status ?? false;
+        const v5 = data.valve_5_status ?? false;
 
         const clamped = Math.max(0, Math.min(100, Math.round(levelPercent)));
 
@@ -107,6 +117,11 @@ export default function DashboardScreen() {
         setWaterLevel(clamped);
         setPump1(p1);
         setPump2(p2);
+        setValve1(v1);
+        setValve2(v2);
+        setValve3(v3);
+        setValve4(v4);
+        setValve5(v5);
         setLastUpdated(new Date().toLocaleTimeString());
 
         if (clamped < 10) {
@@ -128,12 +143,19 @@ export default function DashboardScreen() {
     };
   }, []);
 
-  const togglePump = (
-    pumpKey: "pump_1_status" | "pump_2_status",
+  const toggleControl = (
+    key:
+      | "pump_1_status"
+      | "pump_2_status"
+      | "valve_1_status"
+      | "valve_2_status"
+      | "valve_3_status"
+      | "valve_4_status"
+      | "valve_5_status",
     currentVal: boolean,
   ) => {
     const tankRef = ref(database, "tank_01");
-    update(tankRef, { [pumpKey]: !currentVal });
+    update(tankRef, { [key]: !currentVal });
   };
 
   // Ignore the specific Expo Go notification warning
@@ -191,7 +213,7 @@ export default function DashboardScreen() {
             <Switch
               trackColor={{ false: "#767577", true: "#3498db" }}
               thumbColor={pump1 ? "#fff" : "#f4f3f4"}
-              onValueChange={() => togglePump("pump_1_status", pump1)}
+              onValueChange={() => toggleControl("pump_1_status", pump1)}
               value={pump1}
             />
           </View>
@@ -201,10 +223,68 @@ export default function DashboardScreen() {
             <Switch
               trackColor={{ false: "#767577", true: "#3498db" }}
               thumbColor={pump2 ? "#fff" : "#f4f3f4"}
-              onValueChange={() => togglePump("pump_2_status", pump2)}
+              onValueChange={() => toggleControl("pump_2_status", pump2)}
               value={pump2}
             />
           </View>
+        </View>
+
+        <View style={styles.pumpControls}>
+          <Text style={styles.pumpTitle}>Valve Controls</Text>
+
+          <View style={styles.pumpRow}>
+            <Text style={styles.pumpLabel}>Valve 1</Text>
+            <Switch
+              trackColor={{ false: "#767577", true: "#3498db" }}
+              thumbColor={valve1 ? "#fff" : "#f4f3f4"}
+              onValueChange={() => toggleControl("valve_1_status", valve1)}
+              value={valve1}
+            />
+          </View>
+
+          <View style={styles.pumpRow}>
+            <Text style={styles.pumpLabel}>Valve 2</Text>
+            <Switch
+              trackColor={{ false: "#767577", true: "#3498db" }}
+              thumbColor={valve2 ? "#fff" : "#f4f3f4"}
+              onValueChange={() => toggleControl("valve_2_status", valve2)}
+              value={valve2}
+            />
+          </View>
+
+          <View style={styles.pumpRow}>
+            <Text style={styles.pumpLabel}>Valve 3</Text>
+            <Switch
+              trackColor={{ false: "#767577", true: "#3498db" }}
+              thumbColor={valve3 ? "#fff" : "#f4f3f4"}
+              onValueChange={() => toggleControl("valve_3_status", valve3)}
+              value={valve3}
+            />
+          </View>
+
+          <View style={styles.pumpRow}>
+            <Text style={styles.pumpLabel}>Valve 4</Text>
+            <Switch
+              trackColor={{ false: "#767577", true: "#3498db" }}
+              thumbColor={valve4 ? "#fff" : "#f4f3f4"}
+              onValueChange={() => toggleControl("valve_4_status", valve4)}
+              value={valve4}
+            />
+          </View>
+
+          <View style={styles.pumpRow}>
+            <Text style={styles.pumpLabel}>Valve 5</Text>
+            <Switch
+              trackColor={{ false: "#767577", true: "#3498db" }}
+              thumbColor={valve5 ? "#fff" : "#f4f3f4"}
+              onValueChange={() => toggleControl("valve_5_status", valve5)}
+              value={valve5}
+            />
+          </View>
+
+          <Text style={styles.valveHint}>
+            Valves 1-4 are NC: ON = OPEN. Valve 5 is NO: ON = CLOSED.
+          </Text>
         </View>
       </View>
     </ScrollView>
@@ -269,6 +349,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 1,
     borderColor: "#ecf0f1",
+    marginBottom: 18,
   },
   pumpTitle: {
     fontSize: 18,
@@ -287,5 +368,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#2c3e50",
     fontWeight: "500",
+  },
+  valveHint: {
+    marginTop: 4,
+    fontSize: 12,
+    color: "#8ea0b1",
+    lineHeight: 18,
   },
 });

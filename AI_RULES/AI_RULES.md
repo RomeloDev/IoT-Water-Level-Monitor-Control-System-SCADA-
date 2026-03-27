@@ -24,6 +24,11 @@
      - `pump_2_status` (boolean): true = ON, false = OFF.
      - `auto_switch_minutes` (number): Failover timer setting.
      - `total_depth_cm` (number): The maximum depth of the tank (Centralized).
+     - `valve_1_status` (boolean): true = OPEN (NC), false = CLOSED
+     - `valve_2_status` (boolean): true = OPEN (NC), false = CLOSED
+     - `valve_3_status` (boolean): true = OPEN (NC), false = CLOSED
+     - `valve_4_status` (boolean): true = OPEN (NC), false = CLOSED
+     - `valve_5_status` (boolean): true = CLOSED (NO), false = OPEN
 4. **DATA LOGIC:**
    - **Water Level %:** Read `level_percent` directly from Firebase (ESP32 handles the math dynamically based on `total_depth_cm`).
    - **Persistence:** ALL settings (Depth & Timer) are stored in Firebase. NO `AsyncStorage` for config.
