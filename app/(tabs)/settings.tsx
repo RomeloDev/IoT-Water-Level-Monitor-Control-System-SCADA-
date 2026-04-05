@@ -71,7 +71,10 @@ export default function SettingsScreen() {
       return;
     }
     if (Number.isNaN(parsedTimer) || parsedTimer < 0) {
-      Alert.alert("Invalid input", "Please enter a valid failover timer.");
+      Alert.alert(
+        "Invalid input",
+        "Please enter a valid auto-switch interval.",
+      );
       return;
     }
 
@@ -116,15 +119,19 @@ export default function SettingsScreen() {
       </View>
 
       <View style={styles.card}>
-        <Text style={styles.label}>Failover Timer (minutes)</Text>
+        <Text style={styles.label}>Pump Auto-Switch Interval (minutes)</Text>
         <TextInput
           style={styles.input}
-          placeholder="e.g. 30"
+          placeholder="e.g. 1"
           keyboardType="numeric"
           value={failoverTimer}
           onChangeText={setFailoverTimer}
           maxLength={6}
         />
+        <Text style={styles.helperText}>
+          If Pump 1 stays ON for this duration, the controller should switch
+          Pump 1 OFF and Pump 2 ON.
+        </Text>
       </View>
 
       <View style={styles.card}>
@@ -230,6 +237,12 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#2c3e50",
     marginBottom: 6,
+  },
+  helperText: {
+    marginTop: 8,
+    fontSize: 12,
+    color: "#8ea0b1",
+    lineHeight: 18,
   },
   input: {
     backgroundColor: "#fff",
