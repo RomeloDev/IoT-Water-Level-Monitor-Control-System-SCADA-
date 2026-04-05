@@ -19,6 +19,8 @@
      - `pressure_mpa` (number): Current pressure in the tank in MPa.
      - `flow_rate_lmin` (number): Current water flow in Liters per minute.
      - `total_flow_l` (number): Cumulative water pumped in Liters.
+     - `current_amps_1` (number): AC Current for Pump 1 in Amps.
+     - `current_amps_2` (number): AC Current for Pump 2 in Amps.
    - **Write/Control (Commands & Config to ESP32):**
      - `pump_1_status` (boolean): true = ON, false = OFF.
      - `pump_2_status` (boolean): true = ON, false = OFF.
