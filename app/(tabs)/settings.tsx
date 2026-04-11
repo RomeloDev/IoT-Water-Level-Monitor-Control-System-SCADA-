@@ -6,6 +6,7 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
+  Switch,
   Text,
   TextInput,
   View,
@@ -14,6 +15,7 @@ import {
 export default function SettingsScreen() {
   const [tankDepth, setTankDepth] = useState<string>("");
   const [failoverTimer, setFailoverTimer] = useState<string>("");
+  const [roundRobinEnabled, setRoundRobinEnabled] = useState<boolean>(false);
   const [valve1Name, setValve1Name] = useState<string>("");
   const [valve2Name, setValve2Name] = useState<string>("");
   const [valve3Name, setValve3Name] = useState<string>("");
@@ -37,6 +39,9 @@ export default function SettingsScreen() {
         }
         if (data.auto_switch_minutes !== undefined) {
           setFailoverTimer(String(data.auto_switch_minutes));
+        }
+        if (data.round_robin_enabled !== undefined) {
+          setRoundRobinEnabled(Boolean(data.round_robin_enabled));
         }
         if (data.valve_1_name !== undefined) {
           setValve1Name(String(data.valve_1_name));
@@ -84,6 +89,7 @@ export default function SettingsScreen() {
       await update(tankRef, {
         total_depth_cm: parsedDepth,
         auto_switch_minutes: parsedTimer,
+        round_robin_enabled: roundRobinEnabled,
         valve_1_name: valve1Name.trim(),
         valve_2_name: valve2Name.trim(),
         valve_3_name: valve3Name.trim(),
@@ -114,7 +120,7 @@ export default function SettingsScreen() {
           keyboardType="numeric"
           value={tankDepth}
           onChangeText={setTankDepth}
-          maxLength={6}
+          maxLength={10}
         />
       </View>
 
@@ -132,6 +138,25 @@ export default function SettingsScreen() {
           If Pump 1 stays ON for this duration, the controller should switch
           Pump 1 OFF and Pump 2 ON.
         </Text>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.sectionTitle}>Pump Mode</Text>
+        <View style={styles.switchRow}>
+          <View style={styles.switchCopyWrap}>
+            <Text style={styles.switchTitle}>Round-robin Mode</Text>
+            <Text style={styles.switchHint}>
+              When enabled, ESP32 can alternate Pump 1 and Pump 2 using the
+              auto-switch interval.
+            </Text>
+          </View>
+          <Switch
+            value={roundRobinEnabled}
+            onValueChange={setRoundRobinEnabled}
+            trackColor={{ false: "#c5ced6", true: "#3498db" }}
+            thumbColor="#ffffff"
+          />
+        </View>
       </View>
 
       <View style={styles.card}>
@@ -240,6 +265,27 @@ const styles = StyleSheet.create({
   },
   helperText: {
     marginTop: 8,
+    fontSize: 12,
+    color: "#8ea0b1",
+    lineHeight: 18,
+  },
+  switchRow: {
+    marginTop: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+  },
+  switchCopyWrap: {
+    flex: 1,
+  },
+  switchTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#2c3e50",
+  },
+  switchHint: {
+    marginTop: 4,
     fontSize: 12,
     color: "#8ea0b1",
     lineHeight: 18,
