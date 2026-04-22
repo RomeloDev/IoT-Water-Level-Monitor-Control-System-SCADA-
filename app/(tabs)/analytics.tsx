@@ -6,6 +6,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 const MAX_SAFE_AMPS = 12.0;
+const MPA_TO_PSI = 145.038;
+const PRESSURE_ALERT_PSI = 40.0;
+const PRESSURE_ALERT_RESET_PSI = 38.0;
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -22,11 +25,15 @@ export default function AnalyticsScreen() {
   const [totalFlowL, setTotalFlowL] = useState<number>(0);
   const [currentAmps1, setCurrentAmps1] = useState<number>(0);
   const [currentAmps2, setCurrentAmps2] = useState<number>(0);
+  const [pressurePsi, setPressurePsi] = useState<number>(0);
   const [hasPressureData, setHasPressureData] = useState<boolean>(false);
   const [hasFlowRateData, setHasFlowRateData] = useState<boolean>(false);
   const [hasTotalFlowData, setHasTotalFlowData] = useState<boolean>(false);
   const [hasCurrent1Data, setHasCurrent1Data] = useState<boolean>(false);
   const [hasCurrent2Data, setHasCurrent2Data] = useState<boolean>(false);
+  const [isPressureAlertActive, setIsPressureAlertActive] =
+    useState<boolean>(false);
+  const [isDryRunActive, setIsDryRunActive] = useState<boolean>(false);
   const [lastUpdated, setLastUpdated] = useState<string>("--");
   const emergencyAlarmPlayer = useAudioPlayer(
     require("../../assets/alarm.mp3"),
@@ -34,6 +41,8 @@ export default function AnalyticsScreen() {
   const emergencyAlarmPlayingRef = useRef<boolean>(false);
   const pump1TripNotifiedRef = useRef<boolean>(false);
   const pump2TripNotifiedRef = useRef<boolean>(false);
+  const pressureAlertNotifiedRef = useRef<boolean>(false);
+  const dryRunAlertNotifiedRef = useRef<boolean>(false);
   const hasNotificationPermissionRef = useRef<boolean>(false);
 
   useEffect(() => {
@@ -101,6 +110,22 @@ export default function AnalyticsScreen() {
       }
     };
 
+    const notifyAlert = async (title: string, body: string): Promise<void> => {
+      if (!hasNotificationPermissionRef.current) return;
+
+      try {
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title,
+            body,
+          },
+          trigger: null,
+        });
+      } catch (error) {
+        console.error("Failed to send alert notification:", error);
+      }
+    };
+
     const evaluateSafety = (
       amps1: number,
       amps2: number,
@@ -146,24 +171,55 @@ export default function AnalyticsScreen() {
         const hasTotalFlow = data.total_flow_l !== undefined;
         const hasCurrent1 = data.current_amps_1 !== undefined;
         const hasCurrent2 = data.current_amps_2 !== undefined;
+        const dryRunAlert = data.dry_run_alert === true;
 
         const pump1Status = data.pump_1_status ?? false;
         const pump2Status = data.pump_2_status ?? false;
 
         const amps1 = hasCurrent1 ? Number(data.current_amps_1) : 0;
         const amps2 = hasCurrent2 ? Number(data.current_amps_2) : 0;
+        const pressureMpaValue = hasPressure ? Number(data.pressure_mpa) : 0;
+        const pressurePsi = pressureMpaValue * MPA_TO_PSI;
 
         setHasPressureData(hasPressure);
         setHasFlowRateData(hasFlowRate);
         setHasTotalFlowData(hasTotalFlow);
         setHasCurrent1Data(hasCurrent1);
         setHasCurrent2Data(hasCurrent2);
-        setPressureMpa(hasPressure ? Number(data.pressure_mpa) : 0);
+        setPressureMpa(pressureMpaValue);
+        setPressurePsi(pressurePsi);
         setFlowRateLmin(hasFlowRate ? Number(data.flow_rate_lmin) : 0);
         setTotalFlowL(hasTotalFlow ? Number(data.total_flow_l) : 0);
         setCurrentAmps1(amps1);
         setCurrentAmps2(amps2);
+        setIsPressureAlertActive(
+          hasPressure && pressurePsi >= PRESSURE_ALERT_PSI,
+        );
+        setIsDryRunActive(dryRunAlert);
         setLastUpdated(new Date().toLocaleTimeString());
+
+        if (
+          pressurePsi >= PRESSURE_ALERT_PSI &&
+          !pressureAlertNotifiedRef.current
+        ) {
+          pressureAlertNotifiedRef.current = true;
+          void notifyAlert(
+            "⚠️ High Pressure Alert",
+            `Pressure reached ${pressurePsi.toFixed(1)} psi (>= ${PRESSURE_ALERT_PSI.toFixed(0)} psi).`,
+          );
+        } else if (pressurePsi <= PRESSURE_ALERT_RESET_PSI) {
+          pressureAlertNotifiedRef.current = false;
+        }
+
+        if (dryRunAlert && !dryRunAlertNotifiedRef.current) {
+          dryRunAlertNotifiedRef.current = true;
+          void notifyAlert(
+            "⚠️ Dry Run Detected",
+            "Pump was shut down due to low/no water flow while motor current was present.",
+          );
+        } else if (!dryRunAlert) {
+          dryRunAlertNotifiedRef.current = false;
+        }
 
         evaluateSafety(amps1, amps2, pump1Status, pump2Status);
       },
@@ -257,6 +313,38 @@ export default function AnalyticsScreen() {
         </View>
       </View>
 
+      <View style={styles.alertCard}>
+        <Text style={styles.alertCardTitle}>Safety Alerts</Text>
+
+        <View style={styles.alertRow}>
+          <Text style={styles.alertLabel}>Pressure Alert (40 psi)</Text>
+          <Text
+            style={[
+              styles.alertValue,
+              isPressureAlertActive ? styles.alertActive : styles.alertNormal,
+            ]}
+          >
+            {isPressureAlertActive
+              ? `ACTIVE (${pressurePsi.toFixed(1)} psi)`
+              : hasPressureData
+                ? `Normal (${pressurePsi.toFixed(1)} psi)`
+                : "No sensor yet"}
+          </Text>
+        </View>
+
+        <View style={styles.alertRow}>
+          <Text style={styles.alertLabel}>Dry Run Alert</Text>
+          <Text
+            style={[
+              styles.alertValue,
+              isDryRunActive ? styles.alertActive : styles.alertNormal,
+            ]}
+          >
+            {isDryRunActive ? "ACTIVE" : "Normal"}
+          </Text>
+        </View>
+      </View>
+
       <View style={styles.footerCard}>
         <Text style={styles.footerLabel}>Last updated</Text>
         <Text style={styles.footerValue}>{lastUpdated}</Text>
@@ -323,6 +411,43 @@ const styles = StyleSheet.create({
   currentValue: {
     fontSize: 20,
     fontWeight: "700",
+  },
+  alertCard: {
+    marginTop: 14,
+    backgroundColor: "#fff6ea",
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#ffe1ba",
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  alertCardTitle: {
+    fontSize: 12,
+    color: "#9a6d2d",
+    textTransform: "uppercase",
+    letterSpacing: 0.6,
+    marginBottom: 8,
+  },
+  alertRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 4,
+  },
+  alertLabel: {
+    fontSize: 14,
+    color: "#2c3e50",
+    fontWeight: "600",
+  },
+  alertValue: {
+    fontSize: 14,
+    fontWeight: "700",
+  },
+  alertActive: {
+    color: "#e74c3c",
+  },
+  alertNormal: {
+    color: "#27ae60",
   },
   footerCard: {
     marginTop: 14,

@@ -135,7 +135,7 @@ export default function ControllersScreen() {
           />
         </View>
 
-        <View style={styles.controlRow}>
+        {/* <View style={styles.controlRow}>
           <Text style={styles.controlLabel}>{valve4Name}</Text>
           <Switch
             trackColor={{ false: "#767577", true: "#3498db" }}
@@ -153,10 +153,13 @@ export default function ControllersScreen() {
             onValueChange={() => toggleControl("valve_5_status", valve5)}
             value={valve5}
           />
-        </View>
+        </View> */}
 
-        <Text style={styles.valveHint}>
+        {/* <Text style={styles.valveHint}>
           Valves 1-4 are NC: ON = OPEN. Valve 5 is NO: ON = CLOSED.
+        </Text> */}
+        <Text style={styles.valveHint}>
+         All Valves 1-3 are NC: ON = OPEN. .
         </Text>
       </View>
     </ScrollView>

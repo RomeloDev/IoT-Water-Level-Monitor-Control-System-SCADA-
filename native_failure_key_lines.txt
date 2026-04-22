@@ -1,0 +1,573 @@
+    83:   - [32mexpo-modules-core[0m (3.0.29)
+   115: > Task :expo-modules-core:preBuild UP-TO-DATE
+   120: > Task :expo-modules-core:preDebugBuild UP-TO-DATE
+   124: > Task :expo-modules-core:writeDebugAarMetadata UP-TO-DATE
+   129: > Task :react-native-screens:generateCodegenSchemaFromJavaScript UP-TO-DATE
+   135: > Task :react-native-screens:generateCodegenArtifactsFromSchema UP-TO-DATE
+   136: > Task :react-native-screens:preBuild UP-TO-DATE
+   137: > Task :react-native-screens:preDebugBuild UP-TO-DATE
+   144: > Task :react-native-screens:writeDebugAarMetadata UP-TO-DATE
+   167: > Task :expo-modules-core:generateDebugResValues UP-TO-DATE
+   169: > Task :expo-modules-core:generateDebugResources UP-TO-DATE
+   174: > Task :expo-modules-core:packageDebugResources UP-TO-DATE
+   176: > Task :react-native-screens:generateDebugResValues UP-TO-DATE
+   183: > Task :react-native-screens:generateDebugResources UP-TO-DATE
+   196: > Task :react-native-screens:packageDebugResources UP-TO-DATE
+   197: > Task :expo-modules-core:extractDeepLinksDebug UP-TO-DATE
+   200: > Task :expo-modules-core:processDebugManifest UP-TO-DATE
+   206: > Task :react-native-screens:extractDeepLinksDebug UP-TO-DATE
+   209: > Task :react-native-screens:processDebugManifest UP-TO-DATE
+   231: > Task :expo-modules-core:compileDebugLibraryResources UP-TO-DATE
+   236: > Task :expo-modules-core:parseDebugLocalResources UP-TO-DATE
+   238: > Task :expo-modules-core:generateDebugRFile UP-TO-DATE
+   239: > Task :react-native-screens:compileDebugLibraryResources UP-TO-DATE
+   244: > Task :react-native-screens:parseDebugLocalResources UP-TO-DATE
+   246: > Task :react-native-screens:generateDebugRFile UP-TO-DATE
+   249: > Task :expo-modules-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+   253: > Task :expo-modules-core:generateDebugBuildConfig UP-TO-DATE
+   293: > Task :react-native-screens:checkKotlinGradlePluginConfigurationErrors SKIPPED
+   295: > Task :react-native-screens:generateDebugBuildConfig UP-TO-DATE
+   352: > Task :react-native-worklets:assertMinimalReactNativeVersionTask
+   353: > Task :react-native-worklets:assertNewArchitectureEnabledTask SKIPPED
+   356: > Task :react-native-worklets:generateCodegenSchemaFromJavaScript UP-TO-DATE
+   368: > Task :react-native-worklets:generateCodegenArtifactsFromSchema UP-TO-DATE
+   378: > Task :react-native-worklets:prepareWorkletsHeadersForPrefabs UP-TO-DATE
+   379: > Task :react-native-worklets:preBuild
+   380: > Task :react-native-worklets:preDebugBuild
+   381: > Task :react-native-worklets:writeDebugAarMetadata UP-TO-DATE
+   383: > Task :react-native-worklets:generateDebugResValues UP-TO-DATE
+   386: > Task :react-native-worklets:generateDebugResources UP-TO-DATE
+   387: > Task :react-native-worklets:packageDebugResources UP-TO-DATE
+   389: > Task :react-native-worklets:extractDeepLinksDebug UP-TO-DATE
+   390: > Task :react-native-reanimated:assertMinimalReactNativeVersionTask
+   391: > Task :react-native-reanimated:assertNewArchitectureEnabledTask SKIPPED
+   392: > Task :react-native-worklets:processDebugManifest UP-TO-DATE
+   393: > Task :react-native-worklets:compileDebugLibraryResources UP-TO-DATE
+   394: > Task :react-native-worklets:parseDebugLocalResources UP-TO-DATE
+   395: > Task :react-native-worklets:generateDebugRFile UP-TO-DATE
+   396: > Task :expo-modules-core:compileDebugKotlin UP-TO-DATE
+   397: > Task :expo-modules-core:javaPreCompileDebug UP-TO-DATE
+   398: > Task :react-native-worklets:generateDebugBuildConfig UP-TO-DATE
+   399: > Task :react-native-worklets:javaPreCompileDebug UP-TO-DATE
+   400: > Task :react-native-screens:compileDebugKotlin UP-TO-DATE
+   402: > Task :react-native-screens:javaPreCompileDebug UP-TO-DATE
+   403: > Task :expo-modules-core:compileDebugJavaWithJavac UP-TO-DATE
+   405: > Task :react-native-worklets:compileDebugJavaWithJavac UP-TO-DATE
+   406: > Task :expo-modules-core:bundleLibCompileToJarDebug UP-TO-DATE
+   408: > Task :react-native-worklets:bundleLibCompileToJarDebug UP-TO-DATE
+   419: > Task :react-native-screens:compileDebugJavaWithJavac UP-TO-DATE
+   421: > Task :react-native-screens:bundleLibCompileToJarDebug UP-TO-DATE
+   424: > Task :expo-modules-core:mergeDebugShaders UP-TO-DATE
+   426: > Task :expo-modules-core:compileDebugShaders NO-SOURCE
+   427: > Task :expo-modules-core:generateDebugAssets UP-TO-DATE
+   429: > Task :expo-modules-core:mergeDebugAssets UP-TO-DATE
+   431: > Task :react-native-screens:mergeDebugShaders UP-TO-DATE
+   432: > Task :react-native-screens:compileDebugShaders NO-SOURCE
+   433: > Task :react-native-screens:generateDebugAssets UP-TO-DATE
+   435: > Task :react-native-screens:mergeDebugAssets UP-TO-DATE
+   437: > Task :react-native-worklets:mergeDebugShaders UP-TO-DATE
+   438: > Task :react-native-worklets:compileDebugShaders NO-SOURCE
+   439: > Task :react-native-worklets:generateDebugAssets UP-TO-DATE
+   440: > Task :react-native-screens:bundleLibRuntimeToJarDebug UP-TO-DATE
+   441: > Task :react-native-worklets:mergeDebugAssets UP-TO-DATE
+   442: > Task :react-native-worklets:bundleLibRuntimeToJarDebug UP-TO-DATE
+   445: > Task :expo-modules-core:bundleLibRuntimeToJarDebug UP-TO-DATE
+   452: > Task :react-native-worklets:processDebugJavaRes NO-SOURCE
+   455: > Task :react-native-screens:processDebugJavaRes UP-TO-DATE
+   456: > Task :expo-modules-core:processDebugJavaRes UP-TO-DATE
+   468: > Task :react-native-reanimated:assertWorkletsVersionTask
+   469: > Task :react-native-reanimated:generateCodegenSchemaFromJavaScript UP-TO-DATE
+   470: > Task :react-native-reanimated:generateCodegenArtifactsFromSchema UP-TO-DATE
+   471: > Task :react-native-reanimated:prepareReanimatedHeadersForPrefabs UP-TO-DATE
+   472: > Task :react-native-reanimated:preBuild
+   473: > Task :react-native-reanimated:preDebugBuild
+   474: > Task :react-native-reanimated:writeDebugAarMetadata UP-TO-DATE
+   475: > Task :react-native-reanimated:generateDebugResValues UP-TO-DATE
+   476: > Task :react-native-reanimated:generateDebugResources UP-TO-DATE
+   477: > Task :react-native-reanimated:packageDebugResources UP-TO-DATE
+   478: > Task :react-native-reanimated:extractDeepLinksDebug UP-TO-DATE
+   479: > Task :react-native-reanimated:processDebugManifest UP-TO-DATE
+   480: > Task :react-native-reanimated:compileDebugLibraryResources UP-TO-DATE
+   481: > Task :react-native-reanimated:parseDebugLocalResources UP-TO-DATE
+   482: > Task :react-native-reanimated:generateDebugRFile UP-TO-DATE
+   483: > Task :react-native-reanimated:generateDebugBuildConfig UP-TO-DATE
+   484: > Task :react-native-reanimated:javaPreCompileDebug UP-TO-DATE
+   485: > Task :react-native-reanimated:compileDebugJavaWithJavac UP-TO-DATE
+   486: > Task :react-native-worklets:configureCMakeDebug[arm64-v8a]
+   487: > Task :react-native-reanimated:bundleLibCompileToJarDebug UP-TO-DATE
+   488: > Task :expo-modules-core:configureCMakeDebug[arm64-v8a]
+   489: > Task :react-native-reanimated:mergeDebugShaders UP-TO-DATE
+   490: > Task :react-native-reanimated:compileDebugShaders NO-SOURCE
+   491: > Task :react-native-reanimated:generateDebugAssets UP-TO-DATE
+   492: > Task :react-native-reanimated:mergeDebugAssets UP-TO-DATE
+   493: > Task :react-native-reanimated:bundleLibRuntimeToJarDebug UP-TO-DATE
+   494: > Task :react-native-reanimated:processDebugJavaRes NO-SOURCE
+   495: > Task :react-native-screens:configureCMakeDebug[arm64-v8a]
+   496: > Task :react-native-reanimated:mergeDebugJniLibFolders UP-TO-DATE
+   503: > Task :react-native-worklets:configureCMakeDebug[armeabi-v7a]
+   504: > Task :react-native-worklets:generateJsonModelDebug
+   505: > Task :react-native-worklets:prefabDebugConfigurePackage UP-TO-DATE
+   514: > Task :react-native-reanimated:configureCMakeDebug[arm64-v8a]
+   516: > Task :react-native-screens:buildCMakeDebug[arm64-v8a] FAILED
+   517: C/C++: ninja: Entering directory `C:\Users\John Romel Lucot\Expo apps\iot-water-level-app\node_modules\react-native-screens\android\.cxx\Debug\6r5k156q\arm64-v8a'
+   519: C/C++: >>> referenced by RNSScreenRemovalListener.h:9 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNSScreenRemovalListener.h:9)
+   520: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNSScreenRemovalListener.cpp.o:(RNSScreenRemovalListener::~RNSScreenRemovalListener())
+   522: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(std::__ndk1::__function::__func<JNI_OnLoad::$_0, std::__ndk1::allocator<JNI_OnLoad::$_0>, void ()>::~__func())
+   524: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(facebook::jni::basic_strong_ref<facebook::jni::detail::HybridData, facebook::jni::LocalReferenceAllocator> facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::makeCxxInstance<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>&>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>&))
+   528: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNSScreenRemovalListener.cpp.o:(std::__ndk1::__shared_weak_count::__release_shared[abi:ne180000]())
+   530: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(std::__ndk1::weak_ptr<facebook::react::MountingOverrideDelegate const>::~weak_ptr())
+   533: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNSScreenRemovalListener.cpp.o:(typeinfo for facebook::react::MountingOverrideDelegate)
+   535: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(typeinfo for std::__ndk1::__function::__base<void ()>)
+   537: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(typeinfo for JNI_OnLoad::$_0)
+   542: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNSScreenRemovalListener.cpp.o:(typeinfo for RNSScreenRemovalListener)
+   544: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(typeinfo for std::__ndk1::__function::__func<JNI_OnLoad::$_0, std::__ndk1::allocator<JNI_OnLoad::$_0>, void ()>)
+   546: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(typeinfo for RNScreens::RNScreensTurboModule)
+   551: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(facebook::jni::basic_strong_ref<facebook::jni::detail::HybridData, facebook::jni::LocalReferenceAllocator> facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::makeCxxInstance<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>&>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>&))
+   553: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(void* std::__ndk1::__libcpp_operator_new[abi:ne180000]<unsigned long>(unsigned long))
+   556: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(vtable for std::__ndk1::__function::__base<void ()>)
+   558: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(vtable for std::__ndk1::__function::__base<void ()>)
+   560: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(vtable for std::__ndk1::__function::__base<void ()>)
+   564: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(std::__ndk1::enable_if<IsNonWeakReference<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>(), facebook::jni::reference_traits<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>::plain_jni_reference_t>::type facebook::jni::detail::make_ref<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, facebook::jni::GlobalReferenceAllocator>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*> const&))
+   565: C/C++: >>> referenced by RNScreensTurboModule.cpp:61 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScreensTurboModule.cpp:61)
+   566: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(RNScreens::RNScreensTurboModule::startTransition(facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long))
+   567: C/C++: >>> referenced by RNScreensTurboModule.cpp:85 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScreensTurboModule.cpp:85)
+   568: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(RNScreens::RNScreensTurboModule::updateTransition(facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long))
+   572: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(std::__ndk1::enable_if<IsNonWeakReference<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>(), facebook::jni::reference_traits<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>::plain_jni_reference_t>::type facebook::jni::detail::make_ref<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, facebook::jni::GlobalReferenceAllocator>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*> const&))
+   575: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(std::__ndk1::enable_if<IsNonWeakReference<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>(), facebook::jni::reference_traits<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>::plain_jni_reference_t>::type facebook::jni::detail::make_ref<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, facebook::jni::GlobalReferenceAllocator>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*> const&))
+   577: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(std::__ndk1::enable_if<IsNonWeakReference<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>(), facebook::jni::reference_traits<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>::plain_jni_reference_t>::type facebook::jni::detail::make_ref<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, facebook::jni::GlobalReferenceAllocator>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*> const&))
+   580: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(std::__ndk1::enable_if<IsNonWeakReference<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>(), facebook::jni::reference_traits<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>::plain_jni_reference_t>::type facebook::jni::detail::make_ref<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, facebook::jni::GlobalReferenceAllocator>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*> const&))
+   582: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(std::__ndk1::enable_if<IsNonWeakReference<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>(), facebook::jni::reference_traits<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>::plain_jni_reference_t>::type facebook::jni::detail::make_ref<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, facebook::jni::GlobalReferenceAllocator>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*> const&))
+   583: C/C++: ld.lld: error: undefined symbol: __cxa_throw
+   585: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(std::__ndk1::enable_if<IsNonWeakReference<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>(), facebook::jni::reference_traits<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>>::plain_jni_reference_t>::type facebook::jni::detail::make_ref<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, facebook::jni::GlobalReferenceAllocator>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*> const&))
+   586: C/C++: >>> referenced by RNScreensTurboModule.cpp:61 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScreensTurboModule.cpp:61)
+   587: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(RNScreens::RNScreensTurboModule::startTransition(facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long))
+   588: C/C++: >>> referenced by RNScreensTurboModule.cpp:85 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScreensTurboModule.cpp:85)
+   589: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(RNScreens::RNScreensTurboModule::updateTransition(facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long))
+   592: C/C++: >>> referenced by RNScreensTurboModule.cpp:30 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScreensTurboModule.cpp:30)
+   593: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(RNScreens::RNScreensTurboModule::get(facebook::jsi::Runtime&, facebook::jsi::PropNameID const&))
+   594: C/C++: >>> referenced by RNScreensTurboModule.cpp:32 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScreensTurboModule.cpp:32)
+   595: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(RNScreens::RNScreensTurboModule::get(facebook::jsi::Runtime&, facebook::jsi::PropNameID const&))
+   597: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::javaClassLocal())
+   600: C/C++: >>> referenced by RNScreensTurboModule.cpp:61 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScreensTurboModule.cpp:61)
+   601: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(RNScreens::RNScreensTurboModule::startTransition(facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long))
+   602: C/C++: >>> referenced by RNScreensTurboModule.cpp:85 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScreensTurboModule.cpp:85)
+   603: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(RNScreens::RNScreensTurboModule::updateTransition(facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long))
+   604: C/C++: >>> referenced by RNScreensTurboModule.cpp:96 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScreensTurboModule.cpp:96)
+   605: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(RNScreens::RNScreensTurboModule::finishTransition(facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long))
+   609: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::basic_string[abi:ne180000]<0>(char const*))
+   611: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::basic_string[abi:ne180000](char const*, unsigned long))
+   614: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(__clang_call_terminate)
+   616: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(facebook::jni::detail::FunctionWrapper<facebook::jni::basic_strong_ref<facebook::jni::detail::JTypeFor<facebook::jni::detail::HybridData, facebook::jni::JObject, void>::_javaobject*, facebook::jni::LocalReferenceAllocator> (*)(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>), facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*, facebook::jni::basic_strong_ref<facebook::jni::detail::JTypeFor<facebook::jni::detail::HybridData, facebook::jni::JObject, void>::_javaobject*, facebook::jni::LocalReferenceAllocator>>::call(_JNIEnv*, _jobject*, facebook::jni::basic_strong_ref<facebook::jni::detail::JTypeFor<facebook::jni::detail::HybridData, facebook::jni::JObject, void>::_javaobject*, facebook::jni::LocalReferenceAllocator> (*)(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>)))
+   618: C/C++: >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(facebook::jni::detail::FunctionWrapper<void (*)(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::react::JFabricUIManager, facebook::jni::JObject, void>::_javaobject*>&&), facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*, void, facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::react::JFabricUIManager, facebook::jni::JObject, void>::_javaobject*>>::call(_JNIEnv*, _jobject*, facebook::jni::detail::JTypeFor<facebook::react::JFabricUIManager, facebook::jni::JObject, void>::_javaobject*, void (*)(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<rnscreens::NativeProxy, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::react::JFabricUIManager, facebook::jni::JObject, void>::_javaobject*>&&)))
+   622: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(__clang_call_terminate)
+   625: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   627: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   630: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   632: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   635: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(std::length_error::length_error[abi:ne180000](char const*))
+   638: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(std::length_error::length_error[abi:ne180000](char const*))
+   640: C/C++: >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o:(std::length_error::length_error[abi:ne180000](char const*))
+   646: > Task :expo-modules-core:buildCMakeDebug[arm64-v8a] FAILED
+   647: C/C++: ninja: Entering directory `C:\Users\John Romel Lucot\Expo apps\iot-water-level-app\node_modules\expo-modules-core\android\.cxx\Debug\6x4m1t6g\arm64-v8a'
+   649: C/C++: >>> referenced by SharedObject.cpp:13 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/expo-modules-core/common/cpp/SharedObject.cpp:13)
+   650: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(expo::SharedObject::NativeState::~NativeState())
+   652: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&))
+   654: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(std::__ndk1::__function::__func<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_0, std::__ndk1::allocator<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_0>, facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>::~__func())
+   658: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&))
+   660: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(expo::common::setDeallocator(facebook::jsi::Runtime&, std::__ndk1::shared_ptr<facebook::jsi::Object> const&, std::__ndk1::function<void ()>))
+   662: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(std::__ndk1::__function::__func<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_0, std::__ndk1::allocator<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_0>, facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>::__clone() const)
+   666: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(expo::common::setDeallocator(facebook::jsi::Runtime&, std::__ndk1::shared_ptr<facebook::jsi::Object> const&, std::__ndk1::function<void ()>))
+   668: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(expo::common::setDeallocator(facebook::jsi::Runtime&, std::__ndk1::shared_ptr<facebook::jsi::Object> const&, std::__ndk1::function<void ()>))
+   670: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(expo::common::setDeallocator(facebook::jsi::Runtime&, std::__ndk1::shared_ptr<facebook::jsi::Object> const&, std::__ndk1::function<void ()>))
+   674: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(expo::common::setDeallocator(facebook::jsi::Runtime&, std::__ndk1::shared_ptr<facebook::jsi::Object> const&, std::__ndk1::function<void ()>))
+   676: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(std::__ndk1::__shared_ptr_emplace<expo::common::ObjectDeallocator, std::__ndk1::allocator<expo::common::ObjectDeallocator>>::~__shared_ptr_emplace())
+   678: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(std::__ndk1::__shared_ptr_emplace<expo::common::ObjectDeallocator, std::__ndk1::allocator<expo::common::ObjectDeallocator>>::~__shared_ptr_emplace())
+   682: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(std::__ndk1::__function::__func<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_0, std::__ndk1::allocator<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_0>, facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>::operator()(facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*&&, unsigned long&&))
+   684: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(std::__ndk1::shared_ptr<expo::SharedObject::NativeState> facebook::jsi::Object::getNativeState<expo::SharedObject::NativeState>(facebook::jsi::Runtime&) const)
+   686: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(std::__ndk1::__function::__func<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_2, std::__ndk1::allocator<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_2>, facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Object)>::operator()(facebook::jsi::Runtime&, facebook::jsi::Object&&))
+   690: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for expo::SharedObject::NativeState)
+   692: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for std::__ndk1::__function::__func<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_0, std::__ndk1::allocator<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_0>, facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>)
+   694: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for std::__ndk1::__function::__func<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_1, std::__ndk1::allocator<expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_1>, facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>)
+   699: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_0)
+   701: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for expo::SharedObject::installBaseClass(facebook::jsi::Runtime&, std::__ndk1::function<void (long)> const&)::$_1)
+   703: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for std::__ndk1::__function::__base<facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Object)>)
+   708: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(vtable for std::__ndk1::__shared_ptr_emplace<expo::common::ObjectDeallocator, std::__ndk1::allocator<expo::common::ObjectDeallocator>>)
+   710: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(vtable for std::__ndk1::__shared_ptr_emplace<facebook::jsi::StringBuffer, std::__ndk1::allocator<facebook::jsi::StringBuffer>>)
+   712: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/EventEmitter.cpp.o:(vtable for std::__ndk1::__shared_ptr_emplace<expo::EventEmitter::NativeState, std::__ndk1::allocator<expo::EventEmitter::NativeState>>)
+   716: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(typeinfo for std::__ndk1::__shared_ptr_emplace<expo::common::ObjectDeallocator, std::__ndk1::allocator<expo::common::ObjectDeallocator>>)
+   718: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(typeinfo for std::__ndk1::__shared_ptr_emplace<facebook::jsi::StringBuffer, std::__ndk1::allocator<facebook::jsi::StringBuffer>>)
+   720: C/C++: >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/EventEmitter.cpp.o:(typeinfo for std::__ndk1::__shared_ptr_emplace<expo::EventEmitter::NativeState, std::__ndk1::allocator<expo::EventEmitter::NativeState>>)
+   724: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::createClass(facebook::jsi::Runtime&, char const*, std::__ndk1::function<facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>))
+   726: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::createClass(facebook::jsi::Runtime&, char const*, std::__ndk1::function<facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>))
+   728: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::basic_stringstream[abi:ne180000]())
+   732: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::createClass(facebook::jsi::Runtime&, char const*, std::__ndk1::function<facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>))
+   734: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::createClass(facebook::jsi::Runtime&, char const*, std::__ndk1::function<facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>))
+   736: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::basic_stringstream[abi:ne180000]())
+   741: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::createClass(facebook::jsi::Runtime&, char const*, std::__ndk1::function<facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>))
+   743: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::~basic_stringstream())
+   746: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::createClass(facebook::jsi::Runtime&, char const*, std::__ndk1::function<facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>))
+   748: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::basic_stringstream[abi:ne180000]())
+   750: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::~basic_stringstream())
+   753: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::createClass(facebook::jsi::Runtime&, char const*, std::__ndk1::function<facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)>))
+   755: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::basic_stringstream[abi:ne180000]())
+   757: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::~basic_stringstream())
+   760: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::basic_stringstream[abi:ne180000]())
+   762: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::basic_stringstream[abi:ne180000]())
+   766: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::basic_stringstream[abi:ne180000]())
+   769: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_stringstream<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>>::basic_stringstream[abi:ne180000]())
+   772: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>& std::__ndk1::__put_character_sequence[abi:ne180000]<char, std::__ndk1::char_traits<char>>(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>&, char const*, unsigned long))
+   775: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>& std::__ndk1::__put_character_sequence[abi:ne180000]<char, std::__ndk1::char_traits<char>>(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>&, char const*, unsigned long))
+   778: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>& std::__ndk1::__put_character_sequence[abi:ne180000]<char, std::__ndk1::char_traits<char>>(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>&, char const*, unsigned long))
+   780: C/C++: >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>& std::__ndk1::__put_character_sequence[abi:ne180000]<char, std::__ndk1::char_traits<char>>(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>&, char const*, unsigned long))
+   787: > Task :react-native-worklets:buildCMakeDebug[arm64-v8a][worklets] FAILED
+   788: C/C++: ninja: Entering directory `C:\Users\John Romel Lucot\Expo apps\iot-water-level-app\node_modules\react-native-worklets\android\.cxx\Debug\i4y113z5\arm64-v8a'
+   790: C/C++: >>> referenced by WorkletsModuleProxy.cpp:42 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-worklets/Common/cpp/worklets/NativeModules/WorkletsModuleProxy.cpp:42)
+   791: C/C++: >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets/NativeModules/WorkletsModuleProxy.cpp.o:(worklets::WorkletsModuleProxy::WorkletsModuleProxy(facebook::jsi::Runtime&, std::__ndk1::shared_ptr<facebook::react::MessageQueueThread> const&, std::__ndk1::shared_ptr<facebook::react::CallInvoker> const&, std::__ndk1::shared_ptr<worklets::UIScheduler> const&, std::__ndk1::function<bool ()>&&, std::__ndk1::function<void (std::__ndk1::function<void (double)>)>&&, std::__ndk1::shared_ptr<facebook::react::BigStringBuffer const> const&, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>> const&))
+   792: C/C++: >>> referenced by WorkletRuntime.cpp:80 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-worklets/Common/cpp/worklets/WorkletRuntime/WorkletRuntime.cpp:80)
+   793: C/C++: >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets/WorkletRuntime/WorkletRuntime.cpp.o:(worklets::WorkletRuntime::WorkletRuntime(unsigned long, std::__ndk1::shared_ptr<facebook::react::MessageQueueThread> const&, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>> const&, std::__ndk1::shared_ptr<worklets::AsyncQueue> const&, bool))
+   794: C/C++: >>> referenced by JSIWorkletsModuleProxy.cpp:142 (C:/Users/John Romel Lucot/Expo apps/iot-water-level-app/node_modules/react-native-worklets/Common/cpp/worklets/NativeModules/JSIWorkletsModuleProxy.cpp:142)
+   795: C/C++: >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets/NativeModules/JSIWorkletsModuleProxy.cpp.o:(worklets::JSIWorkletsModuleProxy::JSIWorkletsModuleProxy(bool, std::__ndk1::shared_ptr<facebook::react::BigStringBuffer const> const&, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>> const&, std::__ndk1::shared_ptr<facebook::react::MessageQueueThread> const&, std::__ndk1::shared_ptr<worklets::JSScheduler> const&, std::__ndk1::shared_ptr<worklets::UIScheduler> const&, std::__ndk1::shared_ptr<worklets::RuntimeManager> const&, std::__ndk1::weak_ptr<worklets::WorkletRuntime> const&))
+   799: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::lock_guard<std::__ndk1::mutex>::lock_guard[abi:ne180000](std::__ndk1::mutex&))
+   801: C/C++: >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets/RunLoop/AsyncQueueImpl.cpp.o:(std::__ndk1::unique_lock<std::__ndk1::mutex>::unique_lock[abi:ne180000](std::__ndk1::mutex&))
+   804: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::lock_guard<std::__ndk1::mutex>::~lock_guard[abi:ne180000]())
+   806: C/C++: >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets/RunLoop/AsyncQueueImpl.cpp.o:(std::__ndk1::unique_lock<std::__ndk1::mutex>::~unique_lock[abi:ne180000]())
+   808: C/C++: >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets/RunLoop/AsyncQueueImpl.cpp.o:(std::__ndk1::unique_lock<std::__ndk1::mutex>::unlock())
+   811: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(__clang_call_terminate)
+   813: C/C++: >>>               CMakeFiles/worklets.dir/src/main/cpp/worklets/android/WorkletsOnLoad.cpp.o:(facebook::jni::detail::FunctionWrapper<void (*)(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<worklets::AnimationFrameCallback, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, double&&), facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<worklets::AnimationFrameCallback, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*, void, double>::call(_JNIEnv*, _jobject*, double, void (*)(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<worklets::AnimationFrameCallback, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, double&&)))
+   815: C/C++: >>>               CMakeFiles/worklets.dir/src/main/cpp/worklets/android/WorkletsOnLoad.cpp.o:(facebook::jni::detail::MethodWrapper<void (worklets::AnimationFrameCallback::*)(double), &worklets::AnimationFrameCallback::onAnimationFrame(double), worklets::AnimationFrameCallback, void, double>::dispatch(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<worklets::AnimationFrameCallback, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>, double&&))
+   819: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(__clang_call_terminate)
+   822: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   824: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__throw_bad_array_new_length[abi:ne180000]())
+   826: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__throw_bad_function_call[abi:ne180000]())
+   830: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   832: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   835: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   837: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   838: C/C++: ld.lld: error: undefined symbol: __cxa_throw
+   840: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   842: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__throw_bad_array_new_length[abi:ne180000]())
+   844: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__throw_bad_function_call[abi:ne180000]())
+   848: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__throw_length_error[abi:ne180000](char const*))
+   850: C/C++: >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets/WorkletRuntime/RuntimeManager.cpp.o:(std::__ndk1::__throw_out_of_range[abi:ne180000](char const*))
+   852: C/C++: >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets/Tools/VersionUtils.cpp.o:(void std::__ndk1::__throw_regex_error[abi:ne180000]<(std::__ndk1::regex_constants::error_type)17>())
+   856: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::length_error::length_error[abi:ne180000](char const*))
+   858: C/C++: >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets/WorkletRuntime/RuntimeManager.cpp.o:(std::out_of_range::out_of_range[abi:ne180000](char const*))
+   861: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::length_error::length_error[abi:ne180000](char const*))
+   863: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::length_error::length_error[abi:ne180000](char const*))
+   867: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__throw_bad_array_new_length[abi:ne180000]())
+   870: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__throw_bad_array_new_length[abi:ne180000]())
+   872: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__throw_bad_array_new_length[abi:ne180000]())
+   875: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__throw_bad_array_new_length[abi:ne180000]())
+   877: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__throw_bad_array_new_length[abi:ne180000]())
+   880: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(void* std::__ndk1::__libcpp_operator_new[abi:ne180000]<unsigned long, std::align_val_t>(unsigned long, std::align_val_t))
+   883: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(void* std::__ndk1::__libcpp_operator_new[abi:ne180000]<unsigned long>(unsigned long))
+   885: C/C++: >>>               CMakeFiles/worklets.dir/src/main/cpp/worklets/android/WorkletsModule.cpp.o:(facebook::jni::basic_strong_ref<facebook::jni::detail::HybridData, facebook::jni::LocalReferenceAllocator> facebook::jni::HybridClass<worklets::WorkletsModule, facebook::jni::detail::BaseHybridClass>::makeCxxInstance<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<worklets::WorkletsModule, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>&, facebook::jsi::Runtime*&, facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::react::JavaMessageQueueThread, facebook::jni::JObject, void>::_javaobject*>&, std::__ndk1::shared_ptr<facebook::react::CallInvoker>&, std::__ndk1::shared_ptr<worklets::UIScheduler>&, std::__ndk1::shared_ptr<facebook::react::BigStringBuffer const>&, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>> const&>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<worklets::WorkletsModule, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>&, facebook::jsi::Runtime*&, facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::react::JavaMessageQueueThread, facebook::jni::JObject, void>::_javaobject*>&, std::__ndk1::shared_ptr<facebook::react::CallInvoker>&, std::__ndk1::shared_ptr<worklets::UIScheduler>&, std::__ndk1::shared_ptr<facebook::react::BigStringBuffer const>&, std::__ndk1::basic_string<char, std::__ndk1::char_traits<char>, std::__ndk1::allocator<char>> const&))
+   887: C/C++: >>>               CMakeFiles/worklets.dir/src/main/cpp/worklets/android/AndroidUIScheduler.cpp.o:(facebook::jni::basic_strong_ref<facebook::jni::detail::HybridData, facebook::jni::LocalReferenceAllocator> facebook::jni::HybridClass<worklets::AndroidUIScheduler, facebook::jni::detail::BaseHybridClass>::makeCxxInstance<facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<worklets::AndroidUIScheduler, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>&>(facebook::jni::alias_ref<facebook::jni::detail::JTypeFor<facebook::jni::HybridClass<worklets::AndroidUIScheduler, facebook::jni::detail::BaseHybridClass>::JavaPart, facebook::jni::JObject, void>::_javaobject*>&))
+   891: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(void std::__ndk1::__libcpp_operator_delete[abi:ne180000]<void*, std::align_val_t>(void*, std::align_val_t))
+   894: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(void std::__ndk1::__libcpp_operator_delete[abi:ne180000]<void*>(void*))
+   896: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__shared_ptr_emplace<facebook::jsi::Value const, std::__ndk1::allocator<facebook::jsi::Value const>>::~__shared_ptr_emplace())
+   898: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__function::__func<worklets::AnimationFrameBatchinator::getJsiRequestAnimationFrame()::$_0, std::__ndk1::allocator<worklets::AnimationFrameBatchinator::getJsiRequestAnimationFrame()::$_0>, void (facebook::jsi::Runtime&, facebook::jsi::Value const&)>::~__func())
+   902: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::weak_ptr<worklets::AnimationFrameBatchinator>::~weak_ptr())
+   904: C/C++: >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/worklets/AnimationFrameQueue/AnimationFrameBatchinator.cpp.o:(std::__ndk1::__shared_weak_count::__release_shared[abi:ne180000]())
+   906: C/C++: >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets/NativeModules/JSIWorkletsModuleProxy.cpp.o:(std::__ndk1::weak_ptr<worklets::WorkletRuntime>::~weak_ptr())
+   915: > Task :react-native-reanimated:configureCMakeDebug[armeabi-v7a]
+   930: Execution failed for task ':react-native-screens:buildCMakeDebug[arm64-v8a]'.
+   949: 6q\obj\arm64-v8a\librnscreens.so CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84
+   950: 035f59a4694/react-native-screens/cpp/RNScreensTurboModule.cpp.o CMakeFiles/rnsc
+   951: reens.dir/e39a73b712b10d92ced84035f59a4694/react-native-screens/cpp/RNSScreenRe
+   952: movalListener.cpp.o CMakeFiles/rnscreens.dir/src/main/cpp/jni-adapter.cpp.o 
+   953: CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o 
+   954: CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o  "C:/Users/John Romel Lucot/
+   965: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNSSc
+   967:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+   973:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(std::__
+   979:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(fa
+   997:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1003:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(st
+  1009:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1014: CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(typeinfo for 
+  1018: CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(typeinfo for 
+  1026:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1031: CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(typeinfo for 
+  1035:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1046:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(fa
+  1060:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1066:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(vtable 
+  1069:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(vtable 
+  1072:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/OnLoad.cpp.o:(vtable 
+  1080:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(st
+  1096: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScr
+  1098:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1103: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScr
+  1105:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1115:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(st
+  1135:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(st
+  1153:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(st
+  1173:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(st
+  1191:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(st
+  1207:   ld.lld: error: undefined symbol: __cxa_throw
+  1211:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(st
+  1227: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScr
+  1229:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1234: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScr
+  1236:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1245: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScr
+  1247:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1251: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScr
+  1253:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1259:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(fa
+  1266: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScr
+  1268:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1273: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScr
+  1275:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1280: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-screens/cpp/RNScr
+  1282:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1294:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1301:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(st
+  1308:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1313:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(fa
+  1335:   >>>               CMakeFiles/rnscreens.dir/src/main/cpp/NativeProxy.cpp.o:(fa
+  1358:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1365:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1371:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1379:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1385:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1393:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1401:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1407:   >>>               CMakeFiles/rnscreens.dir/e39a73b712b10d92ced84035f59a4694/r
+  1422: Lucot\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe" ^
+  1425: les\\react-native-screens\\android\\.cxx\\Debug\\6r5k156q\\arm64-v8a" ^
+  1428: apps\iot-water-level-app\node_modules\react-native-screens\android
+  1440: Execution failed for task ':expo-modules-core:buildCMakeDebug[arm64-v8a]'.
+  1445: 4m1t6g\obj\arm64-v8a\libexpo-modules-core.so
+  1459: -Wl,-soname,libexpo-modules-core.so -o ..\..\..\..\build\intermediates\cxx\Debu
+  1460: g\6x4m1t6g\obj\arm64-v8a\libexpo-modules-core.so CMakeFiles/expo-modules-core.d
+  1461: ir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/EventEmitter.c
+  1462: pp.o CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e33ee0a/node_mod
+  1463: ules/expo-modules-core/common/cpp/JSIUtils.cpp.o CMakeFiles/expo-modules-core.d
+  1464: ir/e39a73b712b10d92ced84035f59a4694/expo-modules-core/common/cpp/LazyObject.cpp
+  1465: .o CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modul
+  1466: es-core/common/cpp/NativeModule.cpp.o CMakeFiles/expo-modules-core.dir/e39a73b7
+  1467: 12b10d92ced84035f59a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o C
+  1468: MakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-c
+  1469: ore/common/cpp/SharedObject.cpp.o CMakeFiles/expo-modules-core.dir/2796a4c1f1bd
+  1470: 90c95a44faa52e33ee0a/node_modules/expo-modules-core/common/cpp/SharedRef.cpp.o 
+  1471: CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f59a4694/expo-modules-
+  1473: CMakeFiles/expo-modules-core.dir/src/main/cpp/Exceptions.cpp.o 
+  1474: CMakeFiles/expo-modules-core.dir/src/main/cpp/ExpoModulesHostObject.cpp.o 
+  1475: CMakeFiles/expo-modules-core.dir/src/main/cpp/JNIDeallocator.cpp.o 
+  1476: CMakeFiles/expo-modules-core.dir/src/main/cpp/JNIFunctionBody.cpp.o 
+  1477: CMakeFiles/expo-modules-core.dir/src/main/cpp/JNIInjector.cpp.o 
+  1478: CMakeFiles/expo-modules-core.dir/src/main/cpp/JNIUtils.cpp.o 
+  1479: CMakeFiles/expo-modules-core.dir/src/main/cpp/JSIContext.cpp.o 
+  1480: CMakeFiles/expo-modules-core.dir/src/main/cpp/JSReferencesCache.cpp.o 
+  1481: CMakeFiles/expo-modules-core.dir/src/main/cpp/JSharedObject.cpp.o 
+  1482: CMakeFiles/expo-modules-core.dir/src/main/cpp/JavaCallback.cpp.o 
+  1483: CMakeFiles/expo-modules-core.dir/src/main/cpp/JavaReferencesCache.cpp.o 
+  1484: CMakeFiles/expo-modules-core.dir/src/main/cpp/JavaScriptFunction.cpp.o 
+  1485: CMakeFiles/expo-modules-core.dir/src/main/cpp/JavaScriptModuleObject.cpp.o 
+  1486: CMakeFiles/expo-modules-core.dir/src/main/cpp/JavaScriptObject.cpp.o 
+  1487: CMakeFiles/expo-modules-core.dir/src/main/cpp/JavaScriptRuntime.cpp.o 
+  1488: CMakeFiles/expo-modules-core.dir/src/main/cpp/JavaScriptTypedArray.cpp.o 
+  1489: CMakeFiles/expo-modules-core.dir/src/main/cpp/JavaScriptValue.cpp.o 
+  1490: CMakeFiles/expo-modules-core.dir/src/main/cpp/JavaScriptWeakObject.cpp.o 
+  1491: CMakeFiles/expo-modules-core.dir/src/main/cpp/MethodMetadata.cpp.o 
+  1492: CMakeFiles/expo-modules-core.dir/src/main/cpp/RuntimeHolder.cpp.o 
+  1493: CMakeFiles/expo-modules-core.dir/src/main/cpp/WeakRuntimeHolder.cpp.o 
+  1494: CMakeFiles/expo-modules-core.dir/src/main/cpp/types/AnyType.cpp.o 
+  1495: CMakeFiles/expo-modules-core.dir/src/main/cpp/types/ExpectedType.cpp.o 
+  1496: CMakeFiles/expo-modules-core.dir/src/main/cpp/types/FrontendConverter.cpp.o CMa
+  1497: keFiles/expo-modules-core.dir/src/main/cpp/types/FrontendConverterProvider.cpp.
+  1498: o CMakeFiles/expo-modules-core.dir/src/main/cpp/types/JNIToJSIConverter.cpp.o C
+  1499: MakeFiles/expo-modules-core.dir/src/main/cpp/decorators/JSClassesDecorator.cpp.
+  1500: o CMakeFiles/expo-modules-core.dir/src/main/cpp/decorators/JSConstantsDecorator
+  1501: .cpp.o CMakeFiles/expo-modules-core.dir/src/main/cpp/decorators/JSDecoratorsBri
+  1502: dgingObject.cpp.o CMakeFiles/expo-modules-core.dir/src/main/cpp/decorators/JSFu
+  1503: nctionsDecorator.cpp.o CMakeFiles/expo-modules-core.dir/src/main/cpp/decorators
+  1504: /JSObjectDecorator.cpp.o CMakeFiles/expo-modules-core.dir/src/main/cpp/decorato
+  1525: t-water-level-app/node_modules/expo-modules-core/common/cpp/SharedObject.cpp:13
+  1527:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1528: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(expo::SharedObject::Nat
+  1533:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1534: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(expo::SharedObject::ins
+  1540:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1541: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(std::__ndk1::__function
+  1554:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1555: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(expo::SharedObject::ins
+  1561:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1562: 9a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(expo::common::setD
+  1569:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1570: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(std::__ndk1::__function
+  1584:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1585: 9a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(expo::common::setD
+  1592:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1593: 9a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(expo::common::setD
+  1600:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1601: 9a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(expo::common::setD
+  1612:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1613: 9a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(expo::common::setD
+  1620:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1621: 9a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(std::__ndk1::__sha
+  1627:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1628: 9a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(std::__ndk1::__sha
+  1637:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1638: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(std::__ndk1::__function
+  1649:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1650: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(std::__ndk1::shared_ptr
+  1656:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1657: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(std::__ndk1::__function
+  1669:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1670: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for 
+  1673:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1674: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for std::__ndk
+  1682:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1683: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for std::__ndk
+  1696:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1697: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for 
+  1701:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1702: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for 
+  1706:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1707: 9a4694/expo-modules-core/common/cpp/SharedObject.cpp.o:(typeinfo for 
+  1717:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1718: 9a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(vtable for 
+  1722:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1723: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(vtable for 
+  1727:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1728: 9a4694/expo-modules-core/common/cpp/EventEmitter.cpp.o:(vtable for 
+  1736:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1737: 9a4694/expo-modules-core/common/cpp/ObjectDeallocator.cpp.o:(typeinfo for 
+  1741:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1742: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(typeinfo for 
+  1746:   >>>               CMakeFiles/expo-modules-core.dir/e39a73b712b10d92ced84035f5
+  1747: 9a4694/expo-modules-core/common/cpp/EventEmitter.cpp.o:(typeinfo for 
+  1758:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1759: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::
+  1766:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1767: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::
+  1774:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1775: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1786:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1787: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::
+  1794:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1795: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::
+  1802:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1803: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1815:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1816: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::
+  1823:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1824: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1833:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1834: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::
+  1841:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1842: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1848:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1849: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1858:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1859: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(expo::common::
+  1866:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1867: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1873:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1874: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1884:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1885: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1891:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1892: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1902:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1903: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1912:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1913: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1923:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1924: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1934:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1935: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1945:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1946: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1954:   >>>               CMakeFiles/expo-modules-core.dir/2796a4c1f1bd90c95a44faa52e
+  1955: 33ee0a/node_modules/expo-modules-core/common/cpp/JSIUtils.cpp.o:(std::__ndk1::b
+  1970: Lucot\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe" ^
+  1973: les\\expo-modules-core\\android\\.cxx\\Debug\\6x4m1t6g\\arm64-v8a" ^
+  1974:         expo-modules-core
+  1976: apps\iot-water-level-app\node_modules\expo-modules-core\android
+  1989: ':react-native-worklets:buildCMakeDebug[arm64-v8a][worklets]'.
+  2014: ueue/AnimationFrameBatchinator.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e22
+  2017: iveModules/WorkletsModuleProxy.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e22
+  2018: 4c09e79a0e328d/Common/cpp/worklets/Registries/EventHandlerRegistry.cpp.o CMakeF
+  2020: es/WorkletRuntimeRegistry.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e
+  2021: 79a0e328d/Common/cpp/worklets/Resources/SynchronizableUnpacker.cpp.o CMakeFiles
+  2023: lueUnpacker.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Comm
+  2024: on/cpp/worklets/RunLoop/AsyncQueueImpl.cpp.o CMakeFiles/worklets.dir/76a25dbb22
+  2025: b2ec9e224c09e79a0e328d/Common/cpp/worklets/RunLoop/EventLoop.cpp.o CMakeFiles/w
+  2027: rializable.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Commo
+  2028: n/cpp/worklets/SharedItems/Synchronizable.cpp.o CMakeFiles/worklets.dir/76a25db
+  2030: cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/workl
+  2031: ets/Tools/FeatureFlags.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a
+  2032: 0e328d/Common/cpp/worklets/Tools/JSISerializer.cpp.o CMakeFiles/worklets.dir/e3
+  2033: 9a73b712b10d92ced84035f59a4694/react-native-worklets/Common/cpp/worklets/Tools/
+  2034: JSLogger.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/
+  2035: cpp/worklets/Tools/JSScheduler.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e22
+  2036: 4c09e79a0e328d/Common/cpp/worklets/Tools/UIScheduler.cpp.o CMakeFiles/worklets.
+  2038: .o CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Common/cpp/worklets
+  2039: /Tools/WorkletEventHandler.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09
+  2040: e79a0e328d/Common/cpp/worklets/Tools/WorkletsJSIUtils.cpp.o CMakeFiles/worklets
+  2042: .cpp.o CMakeFiles/worklets.dir/3ce89a2d9bb8106b5ae95ba7cb979470/cpp/worklets/Wo
+  2043: rkletRuntime/RNRuntimeWorkletDecorator.cpp.o CMakeFiles/worklets.dir/76a25dbb22
+  2046: etRuntime/RuntimeManager.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e7
+  2047: 9a0e328d/Common/cpp/worklets/WorkletRuntime/UIRuntimeDecorator.cpp.o CMakeFiles
+  2049: me/WorkletHermesRuntime.cpp.o CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79
+  2050: a0e328d/Common/cpp/worklets/WorkletRuntime/WorkletRuntime.cpp.o CMakeFiles/work
+  2053: CMakeFiles/worklets.dir/src/main/cpp/worklets/android/AndroidUIScheduler.cpp.o 
+  2054: CMakeFiles/worklets.dir/src/main/cpp/worklets/android/PlatformLogger.cpp.o 
+  2055: CMakeFiles/worklets.dir/src/main/cpp/worklets/android/WorkletsModule.cpp.o 
+  2056: CMakeFiles/worklets.dir/src/main/cpp/worklets/android/WorkletsOnLoad.cpp.o  
+  2075: apps/iot-water-level-app/node_modules/react-native-worklets/Common/cpp/worklets
+  2077:   >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Co
+  2089: iot-water-level-app/node_modules/react-native-worklets/Common/cpp/worklets/Work
+  2091:   >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Co
+  2099: Lucot/Expo apps/iot-water-level-app/node_modules/react-native-worklets/Common/c
+  2101:   >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Co
+  2118:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2124:   >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Co
+  2132:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2138:   >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Co
+  2144:   >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Co
+  2150:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2156:   >>>               CMakeFiles/worklets.dir/src/main/cpp/worklets/android/Workl
+  2171:   >>>               CMakeFiles/worklets.dir/src/main/cpp/worklets/android/Workl
+  2183:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2191:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2197:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2203:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2212:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2218:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2226:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2232:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2236:   ld.lld: error: undefined symbol: __cxa_throw
+  2240:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2246:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2252:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2261:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2267:   >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Co
+  2273:   >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Co
+  2282:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2288:   >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Co
+  2296:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2302:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2313:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2321:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2327:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2336:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2342:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2351:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2360:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2370:   >>>               CMakeFiles/worklets.dir/src/main/cpp/worklets/android/Workl
+  2398:   >>>               CMakeFiles/worklets.dir/src/main/cpp/worklets/android/Andro
+  2415:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2427:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2433:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2440:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2453:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2459:   >>>               CMakeFiles/worklets.dir/a4085f1ed4886b5ea82df9ad20565ec9/wo
+  2465:   >>>               CMakeFiles/worklets.dir/76a25dbb22b2ec9e224c09e79a0e328d/Co
+  2479: Lucot\\AppData\\Local\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe" ^
+  2482: les\\react-native-worklets\\android\\.cxx\\Debug\\i4y113z5\\arm64-v8a" ^
+  2485: apps\iot-water-level-app\node_modules\react-native-worklets\android
