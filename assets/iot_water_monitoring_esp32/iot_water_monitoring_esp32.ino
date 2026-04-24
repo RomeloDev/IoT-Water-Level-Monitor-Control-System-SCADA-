@@ -59,14 +59,23 @@ int triggerPer = 10;
 int total_depth_cm = 200;
 int sensor_blind_spot_cm = 20;
 int auto_switch_minutes = 30;
-const int tankFullCutoffPercent = 98;
-const int tankResumePercent = 92;
+
+// UPDATED: Source Tank Logic Limits
+const int tankEmptyCutoffPercent = 5; 
+const int tankSafePercent = 10;       
+
 const float mpaToPsi = 145.038;
 const float pressureLowPsi = 20.0;
 const float pressureHighPsi = 40.0;
 
 float pressureMPa = 0.0;
+float pressurePsi = 0.0; // Global PSI variable
 const float maxSafePressureMpa = 1.0;
+
+// Variables retained for safety/compatibility
+const float pressureDividerRatio = 1.5; // For 10k/20k resistors
+const float psiConversionFactor = 145.038;
+// -------------------------------------------
 
 volatile unsigned long flowPulseCount = 0;
 float flowRateLmin = 0.0;
@@ -94,7 +103,7 @@ bool signupOK = false;
 
 String currentDateKey = "";
 bool dailyHistoryRecovered = false;
-bool tankFullLockout = false;
+bool tankEmptyLockout = false; // UPDATED variable name
 bool dryRunAlert = false;
 int nextPumpToStart = 1;
 bool prevPump1Cmd = false;
@@ -149,11 +158,12 @@ void updateDisplay() {
   display.setCursor(0, 0);
 
   display.print("LVL: "); display.print(waterLevelPer); display.println("% ");
-  display.print("PRS: "); display.print(pressureMPa, 2); display.println("MPa");
+  
+  display.print("PRS: "); display.print(pressurePsi, 1); display.println("psi");
+  
   display.print("FLW: "); display.print(flowRateLmin, 1); display.println("L/m");
   display.print("TOT: "); display.print(totalLiters, 0); display.println("L");
 
-  // Fit both amps on one line
   display.print("A1:"); display.print(currentAmps1, 1);
   display.print(" A2:"); display.println(currentAmps2, 1);
 
@@ -162,6 +172,8 @@ void updateDisplay() {
 
 void setup() {
   Serial.begin(115200);
+
+  analogSetAttenuation(ADC_11db);
 
   pinMode(ECHOPIN, INPUT); pinMode(TRIGPIN, OUTPUT);
   pinMode(ButtonPin1, INPUT_PULLUP);
@@ -262,26 +274,51 @@ void loop() {
       else waterLevelPer = map((int)distance, total_depth_cm, sensor_blind_spot_cm, 0, 100);
     }
 
-    if (!tankFullLockout && waterLevelPer >= tankFullCutoffPercent) {
-      tankFullLockout = true;
+    // UPDATED: Source Tank Empty Protection Logic
+    if (!tankEmptyLockout && waterLevelPer <= tankEmptyCutoffPercent) {
+      tankEmptyLockout = true;
       digitalWrite(PUMP1_PIN, HIGH);
       digitalWrite(PUMP2_PIN, HIGH);
       pump1OnStartMillis = 0;
       lastPump1Command = false;
-      Serial.println("TANK FULL: Pump lockout enabled");
-    } else if (tankFullLockout && waterLevelPer <= tankResumePercent) {
-      tankFullLockout = false;
-      Serial.println("TANK LEVEL DROPPED: Pump lockout released");
+      Serial.println("SOURCE TANK EMPTY: Pump lockout enabled to prevent dry run");
+    } else if (tankEmptyLockout && waterLevelPer >= tankSafePercent) {
+      tankEmptyLockout = false;
+      Serial.println("SOURCE TANK REFILLED: Pump lockout released");
     }
 
-    // B. Read Pressure
+    // --- INTEGRATED BLOCK START ---
+    // B. Read Pressure (Direct Pin Voltage Calibration)
     long pressureRaw = 0;
-    for (int i = 0; i < 5; i++) { pressureRaw += analogRead(PRESSURE_PIN); delay(5); }
-    float sensorVoltage = (pressureRaw / 5.0) * (3.3 / 4095.0) * 1.5;
-    pressureMPa = (sensorVoltage > 0.5) ? (sensorVoltage - 0.5) * (1.2 / 4.0) : 0.0;
-    if (pressureMPa < 0.02) pressureMPa = 0.0;
+    const int numSamples = 100; 
+    for (int i = 0; i < numSamples; i++) {
+      pressureRaw += analogRead(PRESSURE_PIN);
+      delayMicroseconds(500); 
+    }
+    
+    float avgRaw = (float)pressureRaw / numSamples;
 
-    // C. Read Flow
+    // 1. Convert Raw ADC to Voltage at the ESP32 pin
+    float pinVoltage = (avgRaw / 4095.0) * 3.3;
+
+    // 2. Direct Calibration using Reverse-Engineered Hardware Data
+    if (pinVoltage <= 0.315) { 
+      pressurePsi = 0.0;
+    } else {
+      pressurePsi = (pinVoltage - 0.311) * 512.82;
+    }
+    
+    // Safety clamp
+    if (pressurePsi < 0.0) pressurePsi = 0.0;
+    
+    // 3. Back-calculate MPa for existing pump safety logic and Firebase
+    pressureMPa = pressurePsi / 145.038;
+
+    // Serial Debug for Calibration
+    // Serial.print("Pin V: "); Serial.print(pinVoltage, 3);
+    // Serial.print(" | P(psi): "); Serial.println(pressurePsi, 1);
+
+    // C. Read Flow (With Phantom Pulse Noise Filter)
     unsigned long timeChange = millis() - flowCalcPrevMillis;
     flowCalcPrevMillis = millis();
     detachInterrupt(digitalPinToInterrupt(FLOW_PIN));
@@ -289,10 +326,14 @@ void loop() {
     attachInterrupt(digitalPinToInterrupt(FLOW_PIN), countFlowPulse, FALLING);
 
     if (timeChange > 0) {
-      flowRateLmin = (pulses / flowCalibrationFactor) * (60000.0 / timeChange);
-      float intervalLiters = flowRateLmin * (timeChange / 60000.0);
-      totalLiters += intervalLiters;
-      dailyTotalLiters += intervalLiters;
+      if (pulses < 3) {
+        flowRateLmin = 0.0; 
+      } else {
+        flowRateLmin = (pulses / flowCalibrationFactor) * (60000.0 / timeChange);
+        float intervalLiters = flowRateLmin * (timeChange / 60000.0);
+        totalLiters += intervalLiters;
+        dailyTotalLiters += intervalLiters;
+      }
     }
 
     // D. Read AC Current
@@ -323,7 +364,7 @@ void loop() {
     if (currentAmps1 > maxSafeAmps) Serial.println("ALERT: PUMP 1 OVERCURRENT!");
     if (currentAmps2 > maxSafeAmps) Serial.println("ALERT: PUMP 2 OVERCURRENT!");
 
-    Serial.print("P:"); Serial.print(pressureMPa, 2);
+    Serial.print("P(psi):"); Serial.print(pressurePsi, 1);
     Serial.print("| F:"); Serial.print(flowRateLmin, 1);
     Serial.print("| A1:"); Serial.print(currentAmps1, 2);
     Serial.print("| A2:"); Serial.println(currentAmps2, 2);
@@ -359,9 +400,10 @@ void loop() {
       pump2Cmd = fbdo.boolData();
     }
 
-    if (tankFullLockout) {
+    // UPDATED: Now enforces lockout when tank is EMPTY
+    if (tankEmptyLockout) {
       if (pump1Cmd || pump2Cmd) {
-        Serial.println("TANK FULL SAFETY: Forcing pumps OFF");
+        Serial.println("TANK EMPTY SAFETY: Forcing pumps OFF");
       }
       pump1Cmd = false;
       pump2Cmd = false;
@@ -383,11 +425,9 @@ void loop() {
     }
 
     // Pressure-based hysteresis control (psi):
-    // <=20 psi: turn ON the next alternating pump, >=40 psi: turn OFF active pump.
-    float pressurePsi = pressureMPa * mpaToPsi;
     bool anyPumpOn = pump1Cmd || pump2Cmd;
 
-    if (!tankFullLockout) {
+    if (!tankEmptyLockout) {
       if (anyPumpOn && pressurePsi >= pressureHighPsi) {
         int stoppedPump = pump1Cmd ? 1 : (pump2Cmd ? 2 : 0);
         pump1Cmd = false;
@@ -433,9 +473,7 @@ void loop() {
       }
     }
 
-    // Dry-run protection:
-    // If near-zero flow while active pump current is 3.0 - 5.0 A, force pump OFF.
-    // Tuned with startup grace + consecutive hit requirement to avoid false positives.
+    // Dry-run protection
     if ((pump1Cmd && !prevPump1Cmd) || (pump2Cmd && !prevPump2Cmd)) {
       activePumpStartMillis = millis();
       dryRunConsecutiveHits = 0;
@@ -493,15 +531,18 @@ void loop() {
     digitalWrite(PUMP1_PIN, pump1Cmd ? LOW : HIGH);
     digitalWrite(PUMP2_PIN, pump2Cmd ? LOW : HIGH);
 
-    // Valve controls
+    // --- AUTOMATED VALVE INTERLOCK ---
+    digitalWrite(VALVE4_PIN, pump1Cmd ? LOW : HIGH);
+    digitalWrite(VALVE5_PIN, pump2Cmd ? LOW : HIGH); 
+
+    // Valve controls (Manual overrides for Valves 1-3 only)
     if (Firebase.RTDB.getBool(&fbdo, "/tank_01/valve_1_status")) digitalWrite(VALVE1_PIN, fbdo.boolData() ? LOW : HIGH);
     if (Firebase.RTDB.getBool(&fbdo, "/tank_01/valve_2_status")) digitalWrite(VALVE2_PIN, fbdo.boolData() ? LOW : HIGH);
     if (Firebase.RTDB.getBool(&fbdo, "/tank_01/valve_3_status")) digitalWrite(VALVE3_PIN, fbdo.boolData() ? LOW : HIGH);
-    if (Firebase.RTDB.getBool(&fbdo, "/tank_01/valve_4_status")) digitalWrite(VALVE4_PIN, fbdo.boolData() ? LOW : HIGH);
-    if (Firebase.RTDB.getBool(&fbdo, "/tank_01/valve_5_status")) digitalWrite(VALVE5_PIN, fbdo.boolData() ? LOW : HIGH);
 
     // Sensor telemetry upload
     Firebase.RTDB.setFloat(&fbdo, "/tank_01/pressure_mpa", pressureMPa);
+    Firebase.RTDB.setFloat(&fbdo, "/tank_01/pressure_psi", pressurePsi);
     Firebase.RTDB.setFloat(&fbdo, "/tank_01/flow_rate_lmin", flowRateLmin);
     Firebase.RTDB.setFloat(&fbdo, "/tank_01/total_flow_l", totalLiters);
     Firebase.RTDB.setFloat(&fbdo, "/tank_01/current_amps_1", currentAmps1);
@@ -516,16 +557,19 @@ void loop() {
       Firebase.RTDB.setFloat(&fbdo, dailyBasePath + "/total_m3", dailyTotalM3);
     }
 
-    Firebase.RTDB.setBool(&fbdo, "/tank_01/tank_full_lockout", tankFullLockout);
+    // UPDATED: Sends tank_empty_lockout to Firebase
+    Firebase.RTDB.setBool(&fbdo, "/tank_01/tank_empty_lockout", tankEmptyLockout);
     Firebase.RTDB.setBool(&fbdo, "/tank_01/dry_run_alert", dryRunAlert);
+
+    // Sync automated valves back to App
+    Firebase.RTDB.setBool(&fbdo, "/tank_01/valve_4_status", pump1Cmd);
+    Firebase.RTDB.setBool(&fbdo, "/tank_01/valve_5_status", pump2Cmd);
   }
 
   delay(10);
 }
 
 void button1Handler(AceButton* button, uint8_t eventType, uint8_t buttonState) {
-  // Buzzer is removed, so we can use this button for something else later,
-  // or just leave it blank for now so it doesn't crash if they press it.
   switch (eventType) {
     case AceButton::kEventReleased:
       Serial.println("Local Button Pressed!");

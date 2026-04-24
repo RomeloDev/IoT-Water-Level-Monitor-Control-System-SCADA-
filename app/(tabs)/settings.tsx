@@ -189,7 +189,7 @@ export default function SettingsScreen() {
           maxLength={30}
         />
 
-        <Text style={styles.label}>Valve 4 Name</Text>
+        {/*<Text style={styles.label}>Valve 4 Name</Text>
         <TextInput
           style={styles.input}
           placeholder="e.g. Utility Valve"
@@ -205,7 +205,7 @@ export default function SettingsScreen() {
           value={valve5Name}
           onChangeText={setValve5Name}
           maxLength={30}
-        />
+        />*/}
       </View>
 
       <Pressable
