@@ -8,9 +8,7 @@ type ControlKey =
   | "pump_2_status"
   | "valve_1_status"
   | "valve_2_status"
-  | "valve_3_status"
-  | "valve_4_status"
-  | "valve_5_status";
+  | "valve_3_status";
 
 export default function ControllersScreen() {
   const [pump1, setPump1] = useState<boolean>(false);
@@ -134,32 +132,40 @@ export default function ControllersScreen() {
             value={valve3}
           />
         </View>
+        <Text style={styles.valveHint}>All Valves 1-3 are NC: ON = OPEN.</Text>
+      </View>
 
-        {/* <View style={styles.controlRow}>
+      <View style={styles.controlsCard}>
+        <Text style={styles.controlsTitle}>Interlocked Valves</Text>
+
+        <View style={styles.controlRow}>
           <Text style={styles.controlLabel}>{valve4Name}</Text>
-          <Switch
-            trackColor={{ false: "#767577", true: "#3498db" }}
-            thumbColor={valve4 ? "#fff" : "#f4f3f4"}
-            onValueChange={() => toggleControl("valve_4_status", valve4)}
-            value={valve4}
-          />
+          <View style={styles.statusPill}>
+            <View
+              style={[
+                styles.statusDot,
+                valve4 ? styles.statusDotOn : styles.statusDotOff,
+              ]}
+            />
+            <Text style={styles.statusText}>{valve4 ? "OPEN" : "CLOSED"}</Text>
+          </View>
         </View>
 
         <View style={styles.controlRow}>
           <Text style={styles.controlLabel}>{valve5Name}</Text>
-          <Switch
-            trackColor={{ false: "#767577", true: "#3498db" }}
-            thumbColor={valve5 ? "#fff" : "#f4f3f4"}
-            onValueChange={() => toggleControl("valve_5_status", valve5)}
-            value={valve5}
-          />
-        </View> */}
+          <View style={styles.statusPill}>
+            <View
+              style={[
+                styles.statusDot,
+                valve5 ? styles.statusDotOn : styles.statusDotOff,
+              ]}
+            />
+            <Text style={styles.statusText}>{valve5 ? "OPEN" : "CLOSED"}</Text>
+          </View>
+        </View>
 
-        {/* <Text style={styles.valveHint}>
-          Valves 1-4 are NC: ON = OPEN. Valve 5 is NO: ON = CLOSED.
-        </Text> */}
         <Text style={styles.valveHint}>
-         All Valves 1-3 are NC: ON = OPEN. .
+          Valves 4-5 are hardware-interlocked to Pumps 1-2.
         </Text>
       </View>
     </ScrollView>
@@ -217,5 +223,31 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#8ea0b1",
     lineHeight: 18,
+  },
+  statusPill: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#eef2f6",
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 14,
+  },
+  statusDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginRight: 8,
+  },
+  statusDotOn: {
+    backgroundColor: "#2ecc71",
+  },
+  statusDotOff: {
+    backgroundColor: "#95a5a6",
+  },
+  statusText: {
+    fontSize: 12,
+    fontWeight: "700",
+    color: "#2c3e50",
+    letterSpacing: 0.4,
   },
 });

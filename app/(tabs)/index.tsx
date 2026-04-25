@@ -6,10 +6,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { LogBox, ScrollView, StyleSheet, Text, View } from "react-native"; // <--- Import ScrollView
 import CircularProgress from "react-native-circular-progress-indicator";
 
+const MPA_TO_PSI = 145.038;
+
 export default function DashboardScreen() {
   const [waterLevel, setWaterLevel] = useState<number>(0);
   const [distance, setDistance] = useState<number>(0);
   const [lastUpdated, setLastUpdated] = useState<string>("--");
+  const [pressurePsi, setPressurePsi] = useState<number>(0);
+  const [pressureMpa, setPressureMpa] = useState<number>(0);
+  const [hasPressurePsi, setHasPressurePsi] = useState<boolean>(false);
+  const [hasPressureMpa, setHasPressureMpa] = useState<boolean>(false);
+  const [isTankEmptyLockout, setIsTankEmptyLockout] = useState<boolean>(false);
+  const [isDryRunActive, setIsDryRunActive] = useState<boolean>(false);
   const alarmPlayer = useAudioPlayer(require("../../assets/alarm.mp3"));
   const isAlarmPlayingRef = useRef<boolean>(false);
   const alarmNotifiedRef = useRef<boolean>(false);
@@ -89,12 +97,32 @@ export default function DashboardScreen() {
 
         const distanceCm = data.distance_cm ?? 0;
         const levelPercent = data.level_percent ?? 0;
+        const hasPressurePsiValue = data.pressure_psi !== undefined;
+        const hasPressureMpaValue = data.pressure_mpa !== undefined;
+        const tankEmptyLockout = data.tank_empty_lockout === true;
+        const dryRunAlert = data.dry_run_alert === true;
+        const pressurePsiValue = hasPressurePsiValue
+          ? Number(data.pressure_psi)
+          : hasPressureMpaValue
+            ? Number(data.pressure_mpa) * MPA_TO_PSI
+            : 0;
+        const pressureMpaValue = hasPressureMpaValue
+          ? Number(data.pressure_mpa)
+          : hasPressurePsiValue
+            ? Number(data.pressure_psi) / MPA_TO_PSI
+            : 0;
 
         const clamped = Math.max(0, Math.min(100, Math.round(levelPercent)));
 
         setDistance(distanceCm);
         setWaterLevel(clamped);
         setLastUpdated(new Date().toLocaleTimeString());
+        setHasPressurePsi(hasPressurePsiValue);
+        setHasPressureMpa(hasPressureMpaValue);
+        setPressurePsi(pressurePsiValue);
+        setPressureMpa(pressureMpaValue);
+        setIsTankEmptyLockout(tankEmptyLockout);
+        setIsDryRunActive(dryRunAlert);
 
         if (clamped < 10) {
           void startAlarm();
@@ -122,6 +150,8 @@ export default function DashboardScreen() {
     "[Reanimated] `createAnimatedPropAdapter` is no longer necessary in Reanimated 4",
   ]);
 
+  const hasAnyPressure = hasPressurePsi || hasPressureMpa;
+
   return (
     // CHANGED: View -> ScrollView
     <ScrollView
@@ -148,6 +178,11 @@ export default function DashboardScreen() {
 
       <View style={styles.infoContainer}>
         <Text style={styles.secondaryInfo}>Sensor Distance: {distance} cm</Text>
+        <Text style={styles.secondaryInfo}>
+          {hasAnyPressure
+            ? `Pressure: ${pressurePsi.toFixed(1)} psi${hasPressureMpa ? ` (${pressureMpa.toFixed(3)} MPa)` : ""}`
+            : "Pressure: No sensor yet"}
+        </Text>
         <Text style={styles.secondaryInfo}>Last Updated: {lastUpdated}</Text>
 
         <View
@@ -160,6 +195,62 @@ export default function DashboardScreen() {
             {waterLevel < 10 ? "⚠️ CRITICAL LOW" : "NORMAL STATUS"}
           </Text>
         </View>
+
+        <View style={styles.safetyCard}>
+          <Text style={styles.safetyTitle}>Safety Status</Text>
+
+          <View style={styles.safetyRow}>
+            <View
+              style={[
+                styles.statusDot,
+                isTankEmptyLockout ? styles.dotCritical : styles.dotNormal,
+              ]}
+            />
+            <Text style={styles.safetyLabel}>Source Tank Lockout</Text>
+            <Text
+              style={[
+                styles.safetyValue,
+                isTankEmptyLockout ? styles.valueCritical : styles.valueNormal,
+              ]}
+            >
+              {isTankEmptyLockout ? "ACTIVE" : "Normal"}
+            </Text>
+          </View>
+
+          <View style={styles.safetyRow}>
+            <View
+              style={[
+                styles.statusDot,
+                isDryRunActive ? styles.dotCritical : styles.dotNormal,
+              ]}
+            />
+            <Text style={styles.safetyLabel}>Dry Run Alert</Text>
+            <Text
+              style={[
+                styles.safetyValue,
+                isDryRunActive ? styles.valueCritical : styles.valueNormal,
+              ]}
+            >
+              {isDryRunActive ? "ACTIVE" : "Normal"}
+            </Text>
+          </View>
+        </View>
+
+        {isTankEmptyLockout && (
+          <View style={[styles.alertBanner, styles.lockoutBanner]}>
+            <Text style={styles.alertBannerText}>
+              Source Tank Empty! Pumps locked out to prevent dry run.
+            </Text>
+          </View>
+        )}
+
+        {isDryRunActive && (
+          <View style={[styles.alertBanner, styles.dryRunBanner]}>
+            <Text style={styles.alertBannerText}>
+              Dry run detected. Pumps forced OFF.
+            </Text>
+          </View>
+        )}
       </View>
     </ScrollView>
   );
@@ -215,5 +306,78 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 16,
+  },
+  safetyCard: {
+    width: "100%",
+    backgroundColor: "#f8f9fb",
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: "#ecf0f1",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    marginBottom: 12,
+  },
+  safetyTitle: {
+    fontSize: 12,
+    color: "#7f8c8d",
+    textTransform: "uppercase",
+    letterSpacing: 0.6,
+    marginBottom: 8,
+  },
+  safetyRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 6,
+  },
+  safetyLabel: {
+    flex: 1,
+    fontSize: 14,
+    color: "#2c3e50",
+    fontWeight: "600",
+  },
+  safetyValue: {
+    fontSize: 13,
+    fontWeight: "700",
+  },
+  statusDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginRight: 10,
+  },
+  dotCritical: {
+    backgroundColor: "#e74c3c",
+  },
+  dotNormal: {
+    backgroundColor: "#2ecc71",
+  },
+  valueCritical: {
+    color: "#e74c3c",
+  },
+  valueNormal: {
+    color: "#27ae60",
+  },
+  alertBanner: {
+    width: "100%",
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    marginBottom: 10,
+  },
+  lockoutBanner: {
+    backgroundColor: "#fff1f0",
+    borderWidth: 1,
+    borderColor: "#ffb8b8",
+  },
+  dryRunBanner: {
+    backgroundColor: "#fff4e5",
+    borderWidth: 1,
+    borderColor: "#ffd6a0",
+  },
+  alertBannerText: {
+    fontSize: 13,
+    fontWeight: "700",
+    color: "#2c3e50",
+    textAlign: "center",
   },
 });

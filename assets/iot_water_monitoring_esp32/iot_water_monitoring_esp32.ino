@@ -81,7 +81,7 @@ volatile unsigned long flowPulseCount = 0;
 float flowRateLmin = 0.0;
 float totalLiters = 0.0;
 float dailyTotalLiters = 0.0;
-const float flowCalibrationFactor = 7.5;
+const float flowCalibrationFactor = 5.5;
 
 // Current Sensor Variables
 float currentAmps1 = 0.0;
@@ -318,7 +318,7 @@ void loop() {
     // Serial.print("Pin V: "); Serial.print(pinVoltage, 3);
     // Serial.print(" | P(psi): "); Serial.println(pressurePsi, 1);
 
-    // C. Read Flow (With Phantom Pulse Noise Filter)
+    // C. Read Flow (Corrected Frequency Math)
     unsigned long timeChange = millis() - flowCalcPrevMillis;
     flowCalcPrevMillis = millis();
     detachInterrupt(digitalPinToInterrupt(FLOW_PIN));
@@ -326,13 +326,31 @@ void loop() {
     attachInterrupt(digitalPinToInterrupt(FLOW_PIN), countFlowPulse, FALLING);
 
     if (timeChange > 0) {
-      if (pulses < 3) {
+      // Print raw hardware data
+      Serial.print("FLOW DEBUG -> Pulses: "); 
+      Serial.print(pulses);
+      Serial.print(" | Time(ms): ");
+      Serial.print(timeChange);
+
+      if (pulses < 3 || pulses > 1000) { 
         flowRateLmin = 0.0; 
+        Serial.println(" | Status: REJECTED (Noise/EMI)");
       } else {
-        flowRateLmin = (pulses / flowCalibrationFactor) * (60000.0 / timeChange);
+        // CORRECTED MATH: 
+        // 1. Find pulses per second (Hz)
+        float currentFrequency = (pulses * 1000.0) / timeChange;
+        
+        // 2. Divide by K-Factor (e.g. 5.5) to get L/min
+        flowRateLmin = currentFrequency / flowCalibrationFactor;
+        
+        // 3. Calculate total liters pumped in this tiny time window
         float intervalLiters = flowRateLmin * (timeChange / 60000.0);
         totalLiters += intervalLiters;
         dailyTotalLiters += intervalLiters;
+        
+        Serial.print(" | Status: ACCEPTED | Rate: ");
+        Serial.print(flowRateLmin, 1);
+        Serial.println(" L/min");
       }
     }
 
